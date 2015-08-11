@@ -1,25 +1,36 @@
 //
 //  ViewController.swift
-//  LNRSimpleNotificationsDemo
+//  LNRSimpleNotifications Demo
 //
-//  Created by Jon Schneider on 8/11/15.
-//  Copyright (c) 2015 Jon Schneider. All rights reserved.
+//  LNRSimpleNotifications: Modifications of TSMessages Copyright (c) 2015 LISNR, inc.
+//  TSMessages: Copyright (c) 2014 Toursprung, Felix Krause <krausefx@gmail.com>
 //
 
 import UIKit
+//import LNRSimpleNotifications // Necessary import to use Pod
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    //MARK: IB Actions
+    
+    @IBAction func showNotificationButtonPressed(sender: AnyObject) {
+        LNRSimpleNotifications.sharedNotificationManager.showNotification("Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo.", callback: { () -> Void in
+            
+            LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
+                println("Notification disimissed")
+            })
+        })
+    }
+    
 }
 

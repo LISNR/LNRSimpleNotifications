@@ -7,25 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FC93F0BF1B7A5BC100A05DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0BE1B7A5BC100A05DC5 /* AppDelegate.swift */; };
-		FC93F0C11B7A5BC100A05DC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0C01B7A5BC100A05DC5 /* ViewController.swift */; };
-		FC93F0C41B7A5BC100A05DC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C21B7A5BC100A05DC5 /* Main.storyboard */; };
 		FC93F0C61B7A5BC100A05DC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C51B7A5BC100A05DC5 /* Images.xcassets */; };
 		FC93F0C91B7A5BC100A05DC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C71B7A5BC100A05DC5 /* LaunchScreen.xib */; };
-		FC93F0E11B7A5C1400A05DC5 /* LNRSimpleNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0DF1B7A5C1400A05DC5 /* LNRSimpleNotifications.swift */; };
-		FC93F0E21B7A5C1400A05DC5 /* LNRSimpleNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0E01B7A5C1400A05DC5 /* LNRSimpleNotificationView.swift */; };
+		FC93F0EB1B7A5DDA00A05DC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0EA1B7A5DDA00A05DC5 /* Main.storyboard */; };
+		FC93F0EE1B7A5E8600A05DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */; };
+		FC93F0EF1B7A5E8600A05DC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */; };
+		FC93F0F11B7A5EC200A05DC5 /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0F01B7A5EC200A05DC5 /* click.wav */; };
+		FC93F0F41B7A601500A05DC5 /* LNRSimpleNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */; };
+		FC93F0F51B7A601500A05DC5 /* LNRSimpleNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		FC93F0B91B7A5BC100A05DC5 /* LNRSimpleNotificationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LNRSimpleNotificationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC93F0BD1B7A5BC100A05DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC93F0BE1B7A5BC100A05DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FC93F0C01B7A5BC100A05DC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FC93F0C31B7A5BC100A05DC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FC93F0C51B7A5BC100A05DC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FC93F0C81B7A5BC100A05DC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		FC93F0DF1B7A5C1400A05DC5 /* LNRSimpleNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNRSimpleNotifications.swift; sourceTree = "<group>"; };
-		FC93F0E01B7A5C1400A05DC5 /* LNRSimpleNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LNRSimpleNotificationView.swift; sourceTree = "<group>"; };
+		FC93F0EA1B7A5DDA00A05DC5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC93F0F01B7A5EC200A05DC5 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = click.wav; path = Resources/click.wav; sourceTree = "<group>"; };
+		FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRSimpleNotifications.swift; path = Classes/LNRSimpleNotifications.swift; sourceTree = "<group>"; };
+		FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRSimpleNotificationView.swift; path = Classes/LNRSimpleNotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				FC93F0DE1B7A5C1400A05DC5 /* LNRSimpleNotifications */,
-				FC93F0BE1B7A5BC100A05DC5 /* AppDelegate.swift */,
-				FC93F0C01B7A5BC100A05DC5 /* ViewController.swift */,
-				FC93F0C21B7A5BC100A05DC5 /* Main.storyboard */,
+				FC93F0E91B7A5DCF00A05DC5 /* Resources */,
+				FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */,
+				FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */,
+				FC93F0EA1B7A5DDA00A05DC5 /* Main.storyboard */,
 				FC93F0C51B7A5BC100A05DC5 /* Images.xcassets */,
 				FC93F0C71B7A5BC100A05DC5 /* LaunchScreen.xib */,
 				FC93F0BC1B7A5BC100A05DC5 /* Supporting Files */,
@@ -80,11 +83,19 @@
 		FC93F0DE1B7A5C1400A05DC5 /* LNRSimpleNotifications */ = {
 			isa = PBXGroup;
 			children = (
-				FC93F0DF1B7A5C1400A05DC5 /* LNRSimpleNotifications.swift */,
-				FC93F0E01B7A5C1400A05DC5 /* LNRSimpleNotificationView.swift */,
+				FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */,
+				FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */,
 			);
 			name = LNRSimpleNotifications;
 			path = ../../LNRSimpleNotifications;
+			sourceTree = "<group>";
+		};
+		FC93F0E91B7A5DCF00A05DC5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FC93F0F01B7A5EC200A05DC5 /* click.wav */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,9 +155,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC93F0C41B7A5BC100A05DC5 /* Main.storyboard in Resources */,
 				FC93F0C91B7A5BC100A05DC5 /* LaunchScreen.xib in Resources */,
 				FC93F0C61B7A5BC100A05DC5 /* Images.xcassets in Resources */,
+				FC93F0EB1B7A5DDA00A05DC5 /* Main.storyboard in Resources */,
+				FC93F0F11B7A5EC200A05DC5 /* click.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,24 +169,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC93F0C11B7A5BC100A05DC5 /* ViewController.swift in Sources */,
-				FC93F0E11B7A5C1400A05DC5 /* LNRSimpleNotifications.swift in Sources */,
-				FC93F0E21B7A5C1400A05DC5 /* LNRSimpleNotificationView.swift in Sources */,
-				FC93F0BF1B7A5BC100A05DC5 /* AppDelegate.swift in Sources */,
+				FC93F0EE1B7A5E8600A05DC5 /* AppDelegate.swift in Sources */,
+				FC93F0F41B7A601500A05DC5 /* LNRSimpleNotifications.swift in Sources */,
+				FC93F0F51B7A601500A05DC5 /* LNRSimpleNotificationView.swift in Sources */,
+				FC93F0EF1B7A5E8600A05DC5 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FC93F0C21B7A5BC100A05DC5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FC93F0C31B7A5BC100A05DC5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FC93F0C71B7A5BC100A05DC5 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

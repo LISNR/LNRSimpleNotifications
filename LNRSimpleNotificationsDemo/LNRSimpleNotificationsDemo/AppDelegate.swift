@@ -1,21 +1,36 @@
 //
 //  AppDelegate.swift
-//  LNRSimpleNotificationsDemo
+//  LNRSimpleNotifications Demo
 //
-//  Created by Jon Schneider on 8/11/15.
-//  Copyright (c) 2015 Jon Schneider. All rights reserved.
+//  LNRSimpleNotifications: Modifications of TSMessages Copyright (c) 2015 LISNR, inc.
+//  TSMessages: Copyright (c) 2014 Toursprung, Felix Krause <krausefx@gmail.com>
 //
 
 import UIKit
+import AudioToolbox
+//import LNRSimpleNotifications // Necessary import to use Pod
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        LNRSimpleNotifications.sharedNotificationManager.notificationsPosition = LNRNotificationPosition.Top
+        LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor = UIColor.whiteColor()
+        LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor = UIColor.blackColor()
+        LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
+        LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
+        
+        var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
+        if let _ = alertSoundURL {
+            var mySound: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)
+            LNRSimpleNotifications.sharedNotificationManager.notificationSound = mySound
+        }
+        
         return true
     }
 
