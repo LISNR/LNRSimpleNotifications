@@ -1,6 +1,7 @@
 #LNRSimpleNotifications
 __TSMessages__ is an amazingly powerful in-app notifications library but requires a lot of setup. __LNRSimpleNotifications__ is a simplified version for the developer who wants beautiful in-app notifications in minutes.
 
+![Budweiser Made in America Screenshot](https://s3.amazonaws.com/lnr-simple-notifications/mia.png)
 ![LNRSimpleNotifications Demo Screenshot](https://s3.amazonaws.com/lnr-simple-notifications/demo-app-scale.png)
 ![Wakarusa Screenshot](https://s3.amazonaws.com/lnr-simple-notifications/waka-scale.png)
 
@@ -83,6 +84,7 @@ import LNRSimpleNotifications
 At the moment we know we've used it in:
  
 - [Wakarusa](https://itunes.apple.com/app/id996589548)
+- [Budweiser Made in America Festival] (https://itunes.apple.com/us/app/made-in-america-festival/id552043563?mt=8)
 
 We're doing more music festivals this year, so you'll see our simple yet stylish notifications in our apps a few more times this Summer and Fall.
 
