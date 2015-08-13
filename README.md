@@ -71,10 +71,10 @@ import LNRSimpleNotifications
 
 ###
 
-- (void) methodThatTriggersNotification:(NSString *)title body:(NSString *)notificationBody {
+func methodThatTriggersNotification:(title: String, body: String) {
 	LNRSimpleNotifications.sharedNotificationManager.showNotification("Test Title", body: "Test Body", callback: { () -> Void in
 		LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
-			println("Notification disimissed")
+			println("Notification dismissed")
 		})
 	})
 }
