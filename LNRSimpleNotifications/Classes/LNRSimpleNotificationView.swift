@@ -93,7 +93,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         
         if let icon = icon {
             self.iconImageView.image = icon
-            self.iconImageView.frame = CGRect(x: padding * 2.0, y: padding, width: icon.size.width, height: icon.size.height)
+            self.iconImageView.frame = CGRect(x: padding, y: padding, width: icon.size.width, height: icon.size.height)
             self.addSubview(self.iconImageView)
         }
         
