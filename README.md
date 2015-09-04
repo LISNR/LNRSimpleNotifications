@@ -92,7 +92,7 @@ Have you used LNRSimpleNotifications in a project? Want your app featured here? 
 
 ##Known Bugs
 
-###0.1.0
+###Since 0.1.0
 
 1. If you trigger notifications very rapidly they'll start appearing immediately instead of waiting for the one before to be dismissed before displaying. If this happens notifications will start appearing over notifications that were already on screen.
 
