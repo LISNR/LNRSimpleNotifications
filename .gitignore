@@ -29,3 +29,7 @@ Pods/
 # Carthage
 Carthage/Checkouts
 Carthage/Build
+
+# Mac
+# Ignore Mac DS_Store files
+.DS_Store
