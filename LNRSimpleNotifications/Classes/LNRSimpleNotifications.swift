@@ -41,14 +41,15 @@ public enum LNRNotificationDuration: NSTimeInterval {
     *  @param callback The block that should be executed when the user taps on the notification
     */
     public func showNotification(title: String, body: String?, callback: LNRSimpleNotificationsCompletionBlock?) {
-        
-        if isNotificationActive {
-            self.dismissActiveNotification( { [unowned self] () -> Void in
-                self.showNotification(title, body: body, callback: callback)
-            })
-        } else {
-            var notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
-            self.displayNotification(notification)
+        dispatch_async(dispatch_get_main_queue()) {
+            if self.isNotificationActive {
+                self.dismissActiveNotification( { () -> Void in
+                    self.showNotification(title, body: body, callback: callback)
+                })
+            } else {
+                var notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
+                self.displayNotification(notification)
+            }
         }
     }
     
