@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         LNRSimpleNotifications.sharedNotificationManager.showNotification("Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo.", callback: { () -> Void in
             
             LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
-                println("Notification disimissed")
+                print("Notification disimissed")
             })
         })
     }

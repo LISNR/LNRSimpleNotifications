@@ -124,6 +124,8 @@
 		FC93F0B11B7A5BC100A05DC5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Jon Schneider";
 				TargetAttributes = {
@@ -310,6 +312,7 @@
 				FC93F0DA1B7A5BC100A05DC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

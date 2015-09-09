@@ -28,7 +28,7 @@ public enum LNRNotificationDuration: NSTimeInterval {
     case Endless = -1.0 // Notification is displayed until it is dismissed by calling dismissActiveNotification
 }
 
-@objc public class LNRSimpleNotifications {
+public class LNRSimpleNotifications {
     
     /**
     *  Returns the Notification Manager singleton
@@ -47,7 +47,7 @@ public enum LNRNotificationDuration: NSTimeInterval {
                     self.showNotification(title, body: body, callback: callback)
                 })
             } else {
-                var notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
+                let notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
                 self.displayNotification(notification)
             }
         }
@@ -188,11 +188,11 @@ public enum LNRNotificationDuration: NSTimeInterval {
         
         var verticalOffset: CGFloat = 0
         
-        var mainWindow = UIApplication .sharedApplication().keyWindow
+        let mainWindow = UIApplication .sharedApplication().keyWindow
         mainWindow?.addSubview(notification)
         
         if !UIApplication.sharedApplication().statusBarHidden {
-            var statusBarSize: CGSize = UIApplication.sharedApplication().statusBarFrame.size
+            let statusBarSize: CGSize = UIApplication.sharedApplication().statusBarFrame.size
             verticalOffset += statusBarSize.height
         }
         
@@ -201,7 +201,7 @@ public enum LNRNotificationDuration: NSTimeInterval {
         if notification.position != LNRNotificationPosition.Bottom {
             toPoint = CGPointMake(notification.center.x, verticalOffset + (CGRectGetHeight(notification.frame) / 2.0))
         } else {
-            var y: CGFloat = UIScreen.mainScreen().bounds.size.height - (CGRectGetHeight(notification.frame) / 2.0)
+            let y: CGFloat = UIScreen.mainScreen().bounds.size.height - (CGRectGetHeight(notification.frame) / 2.0)
             toPoint = CGPointMake(notification.center.x, y)
         }
         
@@ -209,7 +209,7 @@ public enum LNRNotificationDuration: NSTimeInterval {
             AudioServicesPlayAlertSound(notificationSound)
         }
         
-        UIView.animateWithDuration(kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.BeginFromCurrentState | UIViewAnimationOptions.AllowUserInteraction, animations: { () -> Void in
+        UIView.animateWithDuration(kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.CurveEaseInOut, UIViewAnimationOptions.BeginFromCurrentState, UIViewAnimationOptions.AllowUserInteraction], animations: { () -> Void in
             notification.center = toPoint
         }, completion: nil)
         

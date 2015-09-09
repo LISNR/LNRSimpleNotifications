@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
         LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
         
-        var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
+        let alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
         if let _ = alertSoundURL {
             var mySound: SystemSoundID = 0
             AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)

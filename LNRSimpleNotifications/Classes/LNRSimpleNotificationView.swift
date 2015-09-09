@@ -65,7 +65,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         let notificationWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
         let padding: CGFloat = kLNRNotificationViewMinimumPadding
         
-        super.init(frame: CGRect.zeroRect)
+        super.init(frame: CGRect.zero)
         
         // Set background color
         self.backgroundColor = LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor
@@ -80,7 +80,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         self.addSubview(self.titleLabel)
         
         if let bodyText = self.body {
-            if count(bodyText) > 0 {
+            if bodyText.characters.count > 0 {
                 self.bodyLabel.text = bodyText
                 self.bodyLabel.textColor = LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor
                 self.bodyLabel.font = LNRSimpleNotifications.sharedNotificationManager.notificationsBodyFont
@@ -102,7 +102,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         self.seperator.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.addSubview(self.seperator)
         
-        var notificationHeight:CGFloat = self.notificationViewHeightAfterLayoutOutSubviews(padding, notificationWidth: notificationWidth)
+        let notificationHeight:CGFloat = self.notificationViewHeightAfterLayoutOutSubviews(padding, notificationWidth: notificationWidth)
         var topPosition:CGFloat = -notificationHeight;
         
         if self.position == LNRNotificationPosition.Bottom {
@@ -114,11 +114,11 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         if self.position == LNRNotificationPosition.Top {
             self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         } else {
-            self.autoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleTopMargin | UIViewAutoresizing.FlexibleBottomMargin
+            self.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
         }
         
         if self.callback != nil {
-            var tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+            let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
             self.addGestureRecognizer(tapGestureRecognizer)
         }
     }
@@ -126,7 +126,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
     /**
     * Required initializer 'init(coder:)' must be imlemented by subclasses of UIView
     */
-    required public init(coder decoder: NSCoder) {
+    required public init?(coder decoder: NSCoder) {
         self.title = ""
         self.duration = 0
         super.init(coder: decoder)
@@ -161,7 +161,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         self.titleLabel.frame = CGRect(x: textLabelsXPosition, y: padding, width: notificationWidth, height: CGFloat(0.0))
         self.titleLabel.sizeToFit()
         
-        if self.body != nil && count(self.body!) > 0 {
+        if self.body != nil && (self.body!).characters.count > 0 {
             self.bodyLabel.frame = CGRectMake(textLabelsXPosition, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 5.0, notificationWidth - padding - textLabelsXPosition, 0.0)
             self.bodyLabel.sizeToFit()
             height = self.bodyLabel.frame.origin.y + self.bodyLabel.frame.size.height
