@@ -28,7 +28,7 @@ public enum LNRNotificationDuration: NSTimeInterval {
     case Endless = -1.0 // Notification is displayed until it is dismissed by calling dismissActiveNotification
 }
 
-public class LNRSimpleNotifications {
+public class LNRSimpleNotifications: NSObject {
     
     /**
     *  Returns the Notification Manager singleton
