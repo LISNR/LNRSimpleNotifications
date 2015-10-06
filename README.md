@@ -22,7 +22,7 @@ If your project is in Objective-C:
 1. Install the Pod. Remember to add __use_frameworks!__ to your Podfile.
 2. Add the AudioToolbox framework to your project.
 3. Set "Defines Modules" to __Yes__ in your build settings.
-4. Import the LNRSimpleNotification module's Xcode-generated Swift header file in the classes you want to trigger and style your in-app notifications. The name of this header should be __#import <LNRSimpleNotifications/LNRSimpleNotifications-Swift.h>__.
+4. Import the LNRSimpleNotification module's Xcode-generated Swift header file in the classes you want to trigger and style your in-app notifications. The name of this header should be __#import \<LNRSimpleNotifications/LNRSimpleNotifications-Swift.h>__.
 5. (Optional) Style your notifications in your AppDelegate's __application:didFinishLaunchingWithOptions:__ method or your notification manager's initializer.
 
 ## Demo Project
