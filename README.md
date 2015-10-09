@@ -96,6 +96,9 @@ Have you used LNRSimpleNotifications in a project? Want your app featured here? 
 
 1. If you trigger notifications very rapidly they'll start appearing immediately instead of waiting for the one before to be dismissed before displaying. If this happens notifications will start appearing over notifications that were already on screen.
 
+##Pull Requests?
+Absolutely!
+
 ##About LISNR
 
 LISNR is a startup leveraging high frequency, inaudible sounds waves to transmit data over audio. Using our technology we have activated synchronized light shows at concerts, triggered location-based notifications, rewarded music fans with behind-the-scenes content, delivered at-shelf product information, and solved pain points in sports stadiums for the Dallas Cowboys, Swedish House Mafia, Roc Nation, AT&T, Budweiser, and many more.
