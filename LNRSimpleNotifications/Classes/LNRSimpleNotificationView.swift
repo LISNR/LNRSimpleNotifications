@@ -8,6 +8,8 @@
 import UIKit
 
 let kLNRNotificationViewMinimumPadding: CGFloat = 15.0
+let kStatusBarHeight: CGFloat = 20.0
+let kBodyLabelTopPadding: CGFloat = 5.0
 
 public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
     
@@ -153,16 +155,17 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         var height: CGFloat = 0.0
         
         var textLabelsXPosition: CGFloat = 2.0 * padding
+        let topPadding = self.position == LNRNotificationPosition.Top ? kStatusBarHeight + padding : padding
         
         if let image = self.iconImageView.image {
             textLabelsXPosition += image.size.width
         }
         
-        self.titleLabel.frame = CGRect(x: textLabelsXPosition, y: padding, width: notificationWidth, height: CGFloat(0.0))
+        self.titleLabel.frame = CGRect(x: textLabelsXPosition, y: topPadding, width: notificationWidth, height: CGFloat(0.0))
         self.titleLabel.sizeToFit()
         
         if self.body != nil && (self.body!).characters.count > 0 {
-            self.bodyLabel.frame = CGRectMake(textLabelsXPosition, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + 5.0, notificationWidth - padding - textLabelsXPosition, 0.0)
+            self.bodyLabel.frame = CGRectMake(textLabelsXPosition, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + kBodyLabelTopPadding, notificationWidth - padding - textLabelsXPosition, 0.0)
             self.bodyLabel.sizeToFit()
             height = self.bodyLabel.frame.origin.y + self.bodyLabel.frame.size.height
         } else {

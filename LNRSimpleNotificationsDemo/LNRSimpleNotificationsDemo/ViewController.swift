@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     //MARK: IB Actions
     
     @IBAction func showNotificationButtonPressed(sender: AnyObject) {
-        LNRSimpleNotifications.sharedNotificationManager.showNotification("Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo.", callback: { () -> Void in
+        LNRSimpleNotifications.sharedNotificationManager.showNotification("Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo. Food truck iPhone normcore whatever selfies, actually ugh cliche PBR&B literally 8-bit. Farm-to-table retro VHS roof party, cold-pressed banh mi next level freegan .", callback: { () -> Void in
             
             LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
                 print("Notification disimissed")

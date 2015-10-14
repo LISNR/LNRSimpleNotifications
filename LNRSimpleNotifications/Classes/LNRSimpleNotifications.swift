@@ -186,20 +186,13 @@ public class LNRSimpleNotifications: NSObject {
         
         notification.isDisplayed = true
         
-        var verticalOffset: CGFloat = 0
-        
         let mainWindow = UIApplication .sharedApplication().keyWindow
         mainWindow?.addSubview(notification)
-        
-        if !UIApplication.sharedApplication().statusBarHidden {
-            let statusBarSize: CGSize = UIApplication.sharedApplication().statusBarFrame.size
-            verticalOffset += statusBarSize.height
-        }
         
         var toPoint: CGPoint
         
         if notification.position != LNRNotificationPosition.Bottom {
-            toPoint = CGPointMake(notification.center.x, verticalOffset + (CGRectGetHeight(notification.frame) / 2.0))
+            toPoint = CGPointMake(notification.center.x, CGRectGetHeight(notification.frame) / 2.0)
         } else {
             let y: CGFloat = UIScreen.mainScreen().bounds.size.height - (CGRectGetHeight(notification.frame) / 2.0)
             toPoint = CGPointMake(notification.center.x, y)
