@@ -40,23 +40,23 @@ import LNRSimpleNotifications
 ###
 
 func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+	// Override point for customization after application launch.
         
-        LNRSimpleNotifications.sharedNotificationManager.notificationsPosition = LNRNotificationPosition.Top
-        LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor = UIColor.whiteColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor = UIColor.blackColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
+	LNRSimpleNotifications.sharedNotificationManager.notificationsPosition = LNRNotificationPosition.Top
+	LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor = UIColor.whiteColor()
+	LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor = UIColor.blackColor()
+	LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
+	LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
         
-        var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
-        if let _ = alertSoundURL {
-            var mySound: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)
-            LNRSimpleNotifications.sharedNotificationManager.notificationSound = mySound
-        }
+	var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
+	if let _ = alertSoundURL {
+		var mySound: SystemSoundID = 0
+		AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)
+		LNRSimpleNotifications.sharedNotificationManager.notificationSound = mySound
+	}
         
-        return true
-    }
+	return true
+}
 ```
 
 You can also configure an icon that will appear in your notification and set a custom font for the notification title and body.
