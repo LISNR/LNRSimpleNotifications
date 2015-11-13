@@ -5,7 +5,7 @@ Copyright for portions of LNRSimpleNotifications and LNRSimpleNotificationsDemo 
 The MIT License (MIT):
 
 LNRSimpleNotifications: Modifications of TSMessages Copyright (c) 2015 LISNR, inc.
-TSMesages: Copyright (c) 2014 Toursprung, Felix Krause <krausefx@gmail.com>
+TSMessages: Copyright (c) 2014 Toursprung, Felix Krause <krausefx@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
