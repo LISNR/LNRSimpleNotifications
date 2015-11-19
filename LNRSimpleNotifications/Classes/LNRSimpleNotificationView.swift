@@ -161,7 +161,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
             textLabelsXPosition += image.size.width
         }
         
-        self.titleLabel.frame = CGRect(x: textLabelsXPosition, y: topPadding, width: notificationWidth, height: CGFloat(0.0))
+        self.titleLabel.frame = CGRect(x: textLabelsXPosition, y: topPadding, width: notificationWidth - textLabelsXPosition - padding, height: CGFloat(0.0))
         self.titleLabel.sizeToFit()
         
         if self.body != nil && (self.body!).characters.count > 0 {
