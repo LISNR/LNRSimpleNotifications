@@ -175,7 +175,8 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
 
         height += padding
         
-        self.iconImageView.center = CGPoint(x: self.iconImageView.center.x, y: round(height / 2.0))
+        let yPosition = self.position == LNRNotificationPosition.Top ? round((kStatusBarHeight+height) / 2.0) : round((height) / 2.0)
+        self.iconImageView.center = CGPoint(x: self.iconImageView.center.x, y: yPosition)
         
         if self.position == LNRNotificationPosition.Top {
             var seperatorFrame: CGRect = self.seperator.frame

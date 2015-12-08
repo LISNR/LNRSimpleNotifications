@@ -53,6 +53,78 @@ public class LNRSimpleNotifications: NSObject {
         }
     }
     
+    /** Shows a notification with Succeed style
+     *  @param title The title of the notification view
+     *  @param body The text that is displayed underneath the title
+     *  @param callback The block that should be executed when the user taps on the notification
+     */
+    public func showSucceedNotification(title: String, body: String?, callback: LNRSimpleNotificationsCompletionBlock?) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.notificationsBackgroundColor = UIColor ( red: 0.2046, green: 0.7479, blue: 0.2493, alpha: 0.797872340425532 )
+            self.notificationsTitleTextColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
+            self.notificationsBodyTextColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
+            self.notificationsSeperatorColor = UIColor ( red: 0.9082, green: 0.9264, blue: 0.9317, alpha: 1.0 )
+            self.notificationsIcon = UIImage(named: "SucceedIcon")
+            
+            if self.isNotificationActive {
+                self.dismissActiveNotification( { () -> Void in
+                    self.showNotification(title, body: body, callback: callback)
+                })
+            } else {
+                let notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
+                self.displayNotification(notification)
+            }
+        }
+    }
+    
+    /** Shows a notification with Failed style
+     *  @param title The title of the notification view
+     *  @param body The text that is displayed underneath the title
+     *  @param callback The block that should be executed when the user taps on the notification
+     */
+    public func showFailedNotification(title: String, body: String?, callback: LNRSimpleNotificationsCompletionBlock?) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.notificationsBackgroundColor = UIColor ( red: 0.8913, green: 0.3546, blue: 0.3997, alpha: 0.804964539007092 )
+            self.notificationsTitleTextColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
+            self.notificationsBodyTextColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
+            self.notificationsSeperatorColor = UIColor ( red: 0.9082, green: 0.9264, blue: 0.9317, alpha: 1.0 )
+            self.notificationsIcon = UIImage(named: "FailedIcon")
+            
+            if self.isNotificationActive {
+                self.dismissActiveNotification( { () -> Void in
+                    self.showNotification(title, body: body, callback: callback)
+                })
+            } else {
+                let notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
+                self.displayNotification(notification)
+            }
+        }
+    }
+    
+    /** Shows a notification with Info style
+     *  @param title The title of the notification view
+     *  @param body The text that is displayed underneath the title
+     *  @param callback The block that should be executed when the user taps on the notification
+     */
+    public func showInfoNotification(title: String, body: String?, callback: LNRSimpleNotificationsCompletionBlock?) {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.notificationsBackgroundColor = UIColor ( red: 0.1938, green: 0.5085, blue: 0.8523, alpha: 0.797872340425532 )
+            self.notificationsTitleTextColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
+            self.notificationsBodyTextColor = UIColor ( red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0 )
+            self.notificationsSeperatorColor = UIColor ( red: 0.9082, green: 0.9264, blue: 0.9317, alpha: 1.0 )
+            self.notificationsIcon = UIImage(named: "InfoIcon")
+            
+            if self.isNotificationActive {
+                self.dismissActiveNotification( { () -> Void in
+                    self.showNotification(title, body: body, callback: callback)
+                })
+            } else {
+                let notification = LNRSimpleNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition)
+                self.displayNotification(notification)
+            }
+        }
+    }
+    
     /** Dismisses the currently displayed notification with a completion block called after the notification disappears off screen
     *  @param completion The block that should be executed when the notification finishes dismissing
     *  @return true if notification dismissal was triggered, false if no notification was currently displayed.

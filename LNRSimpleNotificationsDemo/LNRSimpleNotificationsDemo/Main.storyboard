@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A215h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,21 +18,57 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ymt-96-PzS">
-                                <rect key="frame" x="100" y="269" width="121" height="30"/>
+                                <rect key="frame" x="128" y="269" width="65" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Show Notification">
+                                <state key="normal" title="Show Fail">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2Sq-l5-TSD"/>
+                                    <action selector="showFailedNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6IX-pe-QlB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mXd-2e-WOG">
+                                <rect key="frame" x="111" y="213" width="100" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Show Success">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showSucceedNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="DL2-x0-tW8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ia-2J-cob">
+                                <rect key="frame" x="127" y="324" width="68" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Show Info">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showInfoNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="qBm-ei-cXN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYD-EB-OSx">
+                                <rect key="frame" x="114" y="373" width="95" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Show Custom">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showNotificationButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Dev-2D-CVH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="yYD-EB-OSx" firstAttribute="top" secondItem="7Ia-2J-cob" secondAttribute="bottom" constant="19" id="9aW-Fe-uv4"/>
+                            <constraint firstItem="mXd-2e-WOG" firstAttribute="centerX" secondItem="Ymt-96-PzS" secondAttribute="centerX" id="F9I-Xi-fv2"/>
+                            <constraint firstItem="yYD-EB-OSx" firstAttribute="centerX" secondItem="7Ia-2J-cob" secondAttribute="centerX" id="L3y-5k-TrN"/>
+                            <constraint firstItem="7Ia-2J-cob" firstAttribute="top" secondItem="Ymt-96-PzS" secondAttribute="bottom" constant="25" id="OJY-Hc-2j3"/>
                             <constraint firstAttribute="centerX" secondItem="Ymt-96-PzS" secondAttribute="centerX" id="OLL-90-EFF"/>
+                            <constraint firstItem="7Ia-2J-cob" firstAttribute="centerX" secondItem="Ymt-96-PzS" secondAttribute="centerX" id="g0O-HO-Uov"/>
                             <constraint firstAttribute="centerY" secondItem="Ymt-96-PzS" secondAttribute="centerY" id="jEh-aj-0Pv"/>
+                            <constraint firstItem="Ymt-96-PzS" firstAttribute="top" secondItem="mXd-2e-WOG" secondAttribute="bottom" constant="26" id="nzf-tb-XbE"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

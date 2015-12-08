@@ -18,12 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        LNRSimpleNotifications.sharedNotificationManager.notificationsPosition = LNRNotificationPosition.Top
-        LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor = UIColor.whiteColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor = UIColor.blackColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
-        LNRSimpleNotifications.sharedNotificationManager.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
+//        LNRSimpleNotifications.sharedNotificationManager.notificationsPosition = LNRNotificationPosition.Top
+//        LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor = UIColor.whiteColor()
+//        LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor = UIColor.blackColor()
+//        LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
+//        LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
+//        LNRSimpleNotifications.sharedNotificationManager.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
         
         let alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
         if let _ = alertSoundURL {
