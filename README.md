@@ -80,6 +80,47 @@ func methodThatTriggersNotification:(title: String, body: String) {
 }
 ```
 
+__Three Default Notification Types__
+
+* Succeed Notification
+
+```swift
+LNRSimpleNotifications.sharedNotificationManager.showSucceedNotification("Action Succeed", body: "Congratulations!") { () -> Void in
+            
+            LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
+                print("Notification disimissed")
+            })
+        }
+```
+
+![succeed](http://7qnc72.com1.z0.glb.clouddn.com/notificationsucceed.png)
+
+* Failed Notification
+
+```swift
+LNRSimpleNotifications.sharedNotificationManager.showFailedNotification("Action Failed", body: "WTF?!") { () -> Void in
+            
+            LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
+                print("Notification disimissed")
+            })
+        }
+```
+
+![succeed](http://7qnc72.com1.z0.glb.clouddn.com/notificationfailed.png)
+
+* Info Notification
+
+```swift
+LNRSimpleNotifications.sharedNotificationManager.showInfoNotification("Info", body: "Just leave you a message!") { () -> Void in
+            
+            LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
+                print("Notification disimissed")
+            })
+        }
+```
+
+![succeed](http://7qnc72.com1.z0.glb.clouddn.com/notificationinfo.png)
+
 ##Who's using LNRSimpleNotifications?
 At the moment we know we've used it in:
  
@@ -112,3 +153,4 @@ __LNRSimpleNotifications__ is available under the MIT license. See LICENSE.txt f
 ##Credits
 
 __LNRSimpleNotifications__ is based on __TSMessages__, developed by Felix Krause. If __LNRSimpleNotifications__ isn't quite what you're looking for we recommend you check [it](https://github.com/KrauseFx/TSMessages) out.
+
