@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DDC2A0581C16B54700FF0259 /* FailedIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC2A0551C16B54700FF0259 /* FailedIcon@2x.png */; };
+		DDC2A05A1C16B54700FF0259 /* SucceedIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC2A0571C16B54700FF0259 /* SucceedIcon@2x.png */; };
+		DDC2A05E1C16BCE500FF0259 /* InfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC2A05D1C16BCE500FF0259 /* InfoIcon@2x.png */; };
 		FC7BA7C21BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7BA7C11BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png */; };
 		FC93F0C61B7A5BC100A05DC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C51B7A5BC100A05DC5 /* Images.xcassets */; };
 		FC93F0C91B7A5BC100A05DC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C71B7A5BC100A05DC5 /* LaunchScreen.xib */; };
@@ -19,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DDC2A0551C16B54700FF0259 /* FailedIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FailedIcon@2x.png"; sourceTree = "<group>"; };
+		DDC2A0571C16B54700FF0259 /* SucceedIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SucceedIcon@2x.png"; sourceTree = "<group>"; };
+		DDC2A05D1C16BCE500FF0259 /* InfoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InfoIcon@2x.png"; sourceTree = "<group>"; };
 		FC7BA7C11BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisnr-cir-bw-notifications-icon@2x.png"; sourceTree = "<group>"; };
 		FC93F0B91B7A5BC100A05DC5 /* LNRSimpleNotificationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LNRSimpleNotificationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC93F0BD1B7A5BC100A05DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DDC2A0541C16B52B00FF0259 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				DDC2A0551C16B54700FF0259 /* FailedIcon@2x.png */,
+				DDC2A0571C16B54700FF0259 /* SucceedIcon@2x.png */,
+				DDC2A05D1C16BCE500FF0259 /* InfoIcon@2x.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
 		FC93F0B01B7A5BC100A05DC5 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,7 @@
 		FC93F0DE1B7A5C1400A05DC5 /* LNRSimpleNotifications */ = {
 			isa = PBXGroup;
 			children = (
+				DDC2A0541C16B52B00FF0259 /* Icons */,
 				FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */,
 				FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */,
 			);
@@ -161,9 +178,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC93F0C91B7A5BC100A05DC5 /* LaunchScreen.xib in Resources */,
+				DDC2A05E1C16BCE500FF0259 /* InfoIcon@2x.png in Resources */,
 				FC93F0C61B7A5BC100A05DC5 /* Images.xcassets in Resources */,
 				FC7BA7C21BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png in Resources */,
+				DDC2A05A1C16B54700FF0259 /* SucceedIcon@2x.png in Resources */,
 				FC93F0EB1B7A5DDA00A05DC5 /* Main.storyboard in Resources */,
+				DDC2A0581C16B54700FF0259 /* FailedIcon@2x.png in Resources */,
 				FC93F0F11B7A5EC200A05DC5 /* click.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
