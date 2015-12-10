@@ -1,5 +1,18 @@
 # Change Log
 
+## 0.2.3
+### Fixed
+- Icon vertical positioning is now properly centered. Thanks Chris Akring for submitting this fix!
+- Title label width now respects presence of icon instead of overflowing off the right side of the screen. Thanks Markus Chemelar for submitting this fix!
+
+## 0.2.2
+### Fixed
+- The background of Notifications displayed from the top of the screen has been extended all the way to the top of the screen, rather than leaving a 20px (@1x) gap for the status bar. 
+ 
+## 0.2.1
+### Changed
+- Class __LNRSimpleNotifications__ now inherits from NSObject.
+
 ## 0.2.0
 ### Changed
 - Updated to Swift 2.0. 
