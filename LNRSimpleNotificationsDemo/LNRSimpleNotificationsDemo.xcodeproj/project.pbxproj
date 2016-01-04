@@ -14,8 +14,8 @@
 		FC93F0EE1B7A5E8600A05DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */; };
 		FC93F0EF1B7A5E8600A05DC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */; };
 		FC93F0F11B7A5EC200A05DC5 /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0F01B7A5EC200A05DC5 /* click.wav */; };
-		FC93F0F41B7A601500A05DC5 /* LNRSimpleNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */; };
-		FC93F0F51B7A601500A05DC5 /* LNRSimpleNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */; };
+		FC93F0F41B7A601500A05DC5 /* LNRNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0F21B7A601500A05DC5 /* LNRNotificationManager.swift */; };
+		FC93F0F51B7A601500A05DC5 /* LNRNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0F31B7A601500A05DC5 /* LNRNotificationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,8 @@
 		FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC93F0F01B7A5EC200A05DC5 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = click.wav; path = Resources/click.wav; sourceTree = "<group>"; };
-		FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRSimpleNotifications.swift; path = Classes/LNRSimpleNotifications.swift; sourceTree = "<group>"; };
-		FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRSimpleNotificationView.swift; path = Classes/LNRSimpleNotificationView.swift; sourceTree = "<group>"; };
+		FC93F0F21B7A601500A05DC5 /* LNRNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRNotificationManager.swift; path = Classes/LNRNotificationManager.swift; sourceTree = "<group>"; };
+		FC93F0F31B7A601500A05DC5 /* LNRNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRNotificationView.swift; path = Classes/LNRNotificationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +85,8 @@
 		FC93F0DE1B7A5C1400A05DC5 /* LNRSimpleNotifications */ = {
 			isa = PBXGroup;
 			children = (
-				FC93F0F21B7A601500A05DC5 /* LNRSimpleNotifications.swift */,
-				FC93F0F31B7A601500A05DC5 /* LNRSimpleNotificationView.swift */,
+				FC93F0F21B7A601500A05DC5 /* LNRNotificationManager.swift */,
+				FC93F0F31B7A601500A05DC5 /* LNRNotificationView.swift */,
 			);
 			name = LNRSimpleNotifications;
 			path = ../../LNRSimpleNotifications;
@@ -176,8 +176,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC93F0EE1B7A5E8600A05DC5 /* AppDelegate.swift in Sources */,
-				FC93F0F41B7A601500A05DC5 /* LNRSimpleNotifications.swift in Sources */,
-				FC93F0F51B7A601500A05DC5 /* LNRSimpleNotificationView.swift in Sources */,
+				FC93F0F41B7A601500A05DC5 /* LNRNotificationManager.swift in Sources */,
+				FC93F0F51B7A601500A05DC5 /* LNRNotificationView.swift in Sources */,
 				FC93F0EF1B7A5E8600A05DC5 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

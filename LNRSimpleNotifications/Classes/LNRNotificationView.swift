@@ -11,7 +11,7 @@ let kLNRNotificationViewMinimumPadding: CGFloat = 15.0
 let kStatusBarHeight: CGFloat = 20.0
 let kBodyLabelTopPadding: CGFloat = 5.0
 
-public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
+public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     
     //MARK: Public
     
@@ -21,40 +21,41 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
     public var title: String
     
     /**
-    *  The body of this notification
-    */
+     *  The body of this notification
+     */
     public var body: String?
     
     /**
-    *  The duration of the displayed notification. If it is 0.0 duration will default to the default notification display time
-    */
+     *  The duration of the displayed notification. If it is 0.0 duration will default to the default notification display time
+     */
     public var duration: NSTimeInterval
     
     /**
-    *  The position of the notification (top or bottom)
-    */
+     *  The position of the notification (top or bottom)
+     */
     public var position: LNRNotificationPosition = LNRNotificationPosition.Top
     
     /**
-    *  Set to YES by the Notification manager while the notification view is onscreen
-    */
+     *  Set to YES by the Notification manager while the notification view is onscreen
+     */
     public var isDisplayed: Bool = false
     
     /** Inits the notification view. Do not call this from outside this library.
-    *  @param title The title of the notification view
-    *  @param body The body of the notification view (optional)
-    *  @param image A custom icon image (optional)
-    *  @param duration The duration this notification should be displayed (optional)
-    *  @param callback The block that should be executed, when the user tapped on the notification
-    *  @param position The position of the notification on the screen
-    *  @param dismissingEnabled Should this notification be dismissed when the user taps/swipes it?
-    */
+     *  @param title The title of the notification view
+     *  @param body The body of the notification view (optional)
+     *  @param image A custom icon image (optional)
+     *  @param duration The duration this notification should be displayed (optional)
+     *  @param callback The block that should be executed, when the user tapped on the notification
+     *  @param position The position of the notification on the screen
+     *  @param dismissingEnabled Should this notification be dismissed when the user taps/swipes it?
+     */
     
-    init(title: String, body: String?, icon: UIImage?, duration: NSTimeInterval, callback: LNRSimpleNotificationsCompletionBlock?, position:LNRNotificationPosition) {
+    init(title: String, body: String?, icon: UIImage?, duration: NSTimeInterval, callback: LNRSimpleNotificationsCompletionBlock?, position:LNRNotificationPosition, notificationManager: LNRNotificationManager) {
         
         self.title = title
         self.duration = duration
         self.position = position
+        self.notificationManager = notificationManager
         
         if let body = body {
             self.body = body
@@ -70,12 +71,12 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         super.init(frame: CGRect.zero)
         
         // Set background color
-        self.backgroundColor = LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor
+        self.backgroundColor = notificationManager.notificationsBackgroundColor
         
         // Set up Title label
         self.titleLabel.text = self.title
-        self.titleLabel.textColor = LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor
-        self.titleLabel.font = LNRSimpleNotifications.sharedNotificationManager.notificationsTitleFont
+        self.titleLabel.textColor = notificationManager.notificationsTitleTextColor
+        self.titleLabel.font = notificationManager.notificationsTitleFont
         self.titleLabel.backgroundColor = UIColor.clearColor()
         self.titleLabel.numberOfLines = 0
         self.titleLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -84,8 +85,8 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         if let bodyText = self.body {
             if bodyText.characters.count > 0 {
                 self.bodyLabel.text = bodyText
-                self.bodyLabel.textColor = LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor
-                self.bodyLabel.font = LNRSimpleNotifications.sharedNotificationManager.notificationsBodyFont
+                self.bodyLabel.textColor = notificationManager.notificationsBodyTextColor
+                self.bodyLabel.font = notificationManager.notificationsBodyFont
                 self.bodyLabel.backgroundColor = UIColor.clearColor()
                 self.bodyLabel.numberOfLines = 0
                 self.bodyLabel.lineBreakMode = NSLineBreakMode.ByWordWrapping
@@ -100,7 +101,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         }
         
         self.seperator.frame = CGRect(x: CGFloat(0.0), y: CGFloat(0.0), width: notificationWidth, height: (1.0)) //Set seperator position at the top of the notification view. If notification position is Top we'll update it when we layout subviews.
-        self.seperator.backgroundColor = LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor
+        self.seperator.backgroundColor = notificationManager.notificationsSeperatorColor
         self.seperator.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         self.addSubview(self.seperator)
         
@@ -112,7 +113,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
         }
         
         self.frame = CGRectMake(CGFloat(0.0), topPosition, notificationWidth, notificationHeight)
-
+        
         if self.position == LNRNotificationPosition.Top {
             self.autoresizingMask = UIViewAutoresizing.FlexibleWidth
         } else {
@@ -126,8 +127,8 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
     }
     
     /**
-    * Required initializer 'init(coder:)' must be imlemented by subclasses of UIView
-    */
+     * Required initializer 'init(coder:)' must be imlemented by subclasses of UIView
+     */
     required public init?(coder decoder: NSCoder) {
         self.title = ""
         self.duration = 0
@@ -135,12 +136,12 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
     }
     
     /**
-    *  Dismisses this notification if this notification is currently displayed. 
-    *  @param completion A block called after the completion of the dismiss animation. This block is only called if the notification was displayed on screen at the time dismissWithCompletion: was called.
-    *  @return true if notification was displayed at the time dismissWithCompletion: was called, false if notification was not displayed.
-    */
+     *  Dismisses this notification if this notification is currently displayed.
+     *  @param completion A block called after the completion of the dismiss animation. This block is only called if the notification was displayed on screen at the time dismissWithCompletion: was called.
+     *  @return true if notification was displayed at the time dismissWithCompletion: was called, false if notification was not displayed.
+     */
     public func dismissWithCompletion(completion: LNRSimpleNotificationsCompletionBlock) -> Bool {
-        return LNRSimpleNotifications.sharedNotificationManager.dismissNotification(self, dismissAnimationCompletion: completion)
+        return notificationManager.dismissNotification(self, dismissAnimationCompletion: completion)
     }
     
     //MARK: Layout
@@ -172,7 +173,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
             //Only title label set
             height = self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height
         }
-
+        
         height += padding
         
         let yPosition = self.position == LNRNotificationPosition.Top ?
@@ -199,6 +200,7 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
     private let bodyLabel: UILabel = UILabel()
     private let iconImageView: UIImageView = UIImageView()
     private let seperator: UIView = UIView()
+    private var notificationManager: LNRNotificationManager!
     
     //MARK: Tap Recognition
     
@@ -209,5 +211,5 @@ public class LNRSimpleNotificationView: UIView, UIGestureRecognizerDelegate {
             }
         }
     }
-
+    
 }
