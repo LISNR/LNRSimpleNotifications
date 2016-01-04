@@ -14,7 +14,7 @@ If your project is in Swift:
 1. Install the Pod. Remember to add __use_frameworks!__ to your Podfile.
 2. Add the AudioToolbox framework to your project. 
 3. Add __import LNRSimpleNotifications__ in the classes you want to trigger or style your in-app notifications.
-4. (Optional) Style your notifications in your AppDelegate's __application:didFinishLaunchingWithOptions:__ method or your notification manager's initializer.
+4. (Optional) Style your notifications in the class managing your notificaton's initializer.
 5. There is no step Five.
 
 If your project is in Objective-C:
@@ -23,36 +23,39 @@ If your project is in Objective-C:
 2. Add the AudioToolbox framework to your project.
 3. Set "Defines Modules" to __Yes__ in your build settings.
 4. Import the LNRSimpleNotification module's Xcode-generated Swift header file in the classes you want to trigger and style your in-app notifications. The name of this header should be __#import \<LNRSimpleNotifications/LNRSimpleNotifications-Swift.h>__.
-5. (Optional) Style your notifications in your AppDelegate's __application:didFinishLaunchingWithOptions:__ method or your notification manager's initializer.
+5. (Optional) Style your notifications in the class managing your notificaton's initializer.
 
 ## Demo Project
 
 To run the demo project clone the repo, and run `pod install` from the Example directory first.
 
 ##How do I use it?
-Configure up your notification styles once in your app. We usually use the method __application:didFinishLaunchingWithOptions:__ in __AppDelegate.m__. The init method for whatever class is triggering your in-app notifications is also a good choice.
+Configure your notification styles once in your app. The init method for whatever class is triggering your in-app notifications is a good choice.
 
-__AppDelegate.m__
+__The Class Triggering Notifications__
 
 ```swift
 import LNRSimpleNotifications
+import AudioToolbox
 
 ###
 
-func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-	// Override point for customization after application launch.
+let notificationManager = LNRNotificationManager()
+
+func init() {
+	super.init()
         
-	LNRSimpleNotifications.sharedNotificationManager.notificationsPosition = LNRNotificationPosition.Top
-	LNRSimpleNotifications.sharedNotificationManager.notificationsBackgroundColor = UIColor.whiteColor()
-	LNRSimpleNotifications.sharedNotificationManager.notificationsTitleTextColor = UIColor.blackColor()
-	LNRSimpleNotifications.sharedNotificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
-	LNRSimpleNotifications.sharedNotificationManager.notificationsSeperatorColor = UIColor.grayColor()
+	notificationManager.notificationsPosition = LNRNotificationPosition.Top
+	notificationManager.notificationsBackgroundColor = UIColor.whiteColor()
+	notificationManager.notificationsTitleTextColor = UIColor.blackColor()
+	notificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
+	notificationManager.notificationsSeperatorColor = UIColor.grayColor()
         
 	var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
 	if let _ = alertSoundURL {
 		var mySound: SystemSoundID = 0
 		AudioServicesCreateSystemSoundID(alertSoundURL!, &mySound)
-		LNRSimpleNotifications.sharedNotificationManager.notificationSound = mySound
+		notificationManager.notificationSound = mySound
 	}
         
 	return true
@@ -67,13 +70,14 @@ If you don't set any theme options your notifications will default to black text
 __The Class Triggering Notifications__
 
 ```swift
-import LNRSimpleNotifications
 
-###
+let notificationManager = LNRNotificationManager()
+
+### 
 
 func methodThatTriggersNotification:(title: String, body: String) {
-	LNRSimpleNotifications.sharedNotificationManager.showNotification("Test Title", body: "Test Body", callback: { () -> Void in
-		LNRSimpleNotifications.sharedNotificationManager.dismissActiveNotification({ () -> Void in
+	notificationManager.showNotification("Test Title", body: "Test Body", callback: { () -> Void in
+		notificationManager.dismissActiveNotification({ () -> Void in
 			println("Notification dismissed")
 		})
 	})
