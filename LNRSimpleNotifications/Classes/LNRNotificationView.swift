@@ -50,7 +50,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param dismissingEnabled Should this notification be dismissed when the user taps/swipes it?
      */
     
-    init(title: String, body: String?, icon: UIImage?, duration: NSTimeInterval, callback: LNRSimpleNotificationsCompletionBlock?, position:LNRNotificationPosition, notificationManager: LNRNotificationManager) {
+    init(title: String, body: String?, icon: UIImage?, duration: NSTimeInterval, callback: LNRNotificationOperationCompletionBlock?, position:LNRNotificationPosition, notificationManager: LNRNotificationManager) {
         
         self.title = title
         self.duration = duration
@@ -140,7 +140,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param completion A block called after the completion of the dismiss animation. This block is only called if the notification was displayed on screen at the time dismissWithCompletion: was called.
      *  @return true if notification was displayed at the time dismissWithCompletion: was called, false if notification was not displayed.
      */
-    public func dismissWithCompletion(completion: LNRSimpleNotificationsCompletionBlock) -> Bool {
+    public func dismissWithCompletion(completion: LNRNotificationOperationCompletionBlock) -> Bool {
         return notificationManager.dismissNotification(self, dismissAnimationCompletion: completion)
     }
     
@@ -195,7 +195,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     
     //MARK: Private
     
-    private var callback: LNRSimpleNotificationsCompletionBlock?
+    private var callback: LNRNotificationOperationCompletionBlock?
     private let titleLabel: UILabel = UILabel()
     private let bodyLabel: UILabel = UILabel()
     private let iconImageView: UIImageView = UIImageView()

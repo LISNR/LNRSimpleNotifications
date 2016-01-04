@@ -1,5 +1,12 @@
 # Change Log
 
+## 0.3.0
+### Changed
+- __LNRSimpleNotifications__ class renamed __LNRNotificationManager__.
+- __LNRSimpleNotificationView__ class renamed __LNRNotificationView__.
+- __LNRSimpleNotifications/LNRNotificationManager__ is no longer a singleton - you can create multiple notification managers, each with a different theme, to display notifications. 
+- Sample project updated to demonstrate the use of two notification managers with different themes.
+
 ## 0.2.3
 ### Fixed
 - Icon vertical positioning is now properly centered. Thanks Chris Akring for submitting this fix!

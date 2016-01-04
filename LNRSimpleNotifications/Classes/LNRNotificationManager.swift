@@ -8,7 +8,7 @@
 import UIKit
 import AudioToolbox
 
-public typealias LNRSimpleNotificationsCompletionBlock = Void -> Void
+public typealias LNRNotificationOperationCompletionBlock = Void -> Void
 
 let kLNRNotificationAnimationDuration = 0.3
 
@@ -35,7 +35,7 @@ public class LNRNotificationManager: NSObject {
      *  @param body The text that is displayed underneath the title
      *  @param callback The block that should be executed when the user taps on the notification
      */
-    public func showNotification(title: String, body: String?, callback: LNRSimpleNotificationsCompletionBlock?) {
+    public func showNotification(title: String, body: String?, callback: LNRNotificationOperationCompletionBlock?) {
         dispatch_async(dispatch_get_main_queue()) {
             if self.isNotificationActive {
                 self.dismissActiveNotification( { () -> Void in
@@ -52,7 +52,7 @@ public class LNRNotificationManager: NSObject {
      *  @param completion The block that should be executed when the notification finishes dismissing
      *  @return true if notification dismissal was triggered, false if no notification was currently displayed.
      */
-    public func dismissActiveNotification(completion: LNRSimpleNotificationsCompletionBlock?) -> Bool {
+    public func dismissActiveNotification(completion: LNRNotificationOperationCompletionBlock?) -> Bool {
         
         if isNotificationActive {
             return self.dismissNotification(self.activeNotification!, dismissAnimationCompletion: { () -> Void in
@@ -70,7 +70,7 @@ public class LNRNotificationManager: NSObject {
      *  @param dismissAnimationCompletion The block that should be executed when the notification finishes dismissing
      *  @return true if notification dismissal was triggered, false if notification was not currently displayed.
      */
-    public func dismissNotification(notification: LNRNotificationView, dismissAnimationCompletion:LNRSimpleNotificationsCompletionBlock?) -> Bool {
+    public func dismissNotification(notification: LNRNotificationView, dismissAnimationCompletion:LNRNotificationOperationCompletionBlock?) -> Bool {
         
         if notification.isDisplayed {
             var offScreenPoint: CGPoint
