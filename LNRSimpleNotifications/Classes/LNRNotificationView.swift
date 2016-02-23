@@ -16,8 +16,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     //MARK: Public
     
     /**
-    *  The title of this notification
-    */
+     *  The title of this notification
+     */
     public var title: String
     
     /**
@@ -156,7 +156,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
         var height: CGFloat = 0.0
         
         var textLabelsXPosition: CGFloat = 2.0 * padding
-        let topPadding = self.position == LNRNotificationPosition.Top ? kStatusBarHeight + padding : padding
+        let statusBarVisible = !UIApplication.sharedApplication().statusBarHidden
+        let topPadding = self.position == LNRNotificationPosition.Top && statusBarVisible ? kStatusBarHeight + padding : padding
         
         if let image = self.iconImageView.image {
             textLabelsXPosition += image.size.width
@@ -176,7 +177,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
         
         height += padding
         
-        let yPosition = self.position == LNRNotificationPosition.Top ?
+        let yPosition = self.position == LNRNotificationPosition.Top && statusBarVisible ?
             round((kStatusBarHeight+height) / 2.0) : round((height) / 2.0)
         self.iconImageView.center = CGPoint(x: self.iconImageView.center.x, y: yPosition)
         
