@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         let notificationManager = (incrementor % 2 == 0) ? notificationManager1 : notificationManager2
         
-        notificationManager.showNotification("Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo. Food truck iPhone normcore whatever selfies, actually ugh cliche PBR&B literally 8-bit. Farm-to-table retro VHS roof party, cold-pressed banh mi next level freegan .", callback: { () -> Void in
+        notificationManager.showNotification("Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo. Food truck iPhone normcore whatever selfies, actually ugh cliche PBR&B literally 8-bit. Farm-to-table retro VHS roof party, cold-pressed banh mi next level freegan .", onTap: { () -> Void in
             
             notificationManager.dismissActiveNotification({ () -> Void in
                 print("Notification dismissed")
