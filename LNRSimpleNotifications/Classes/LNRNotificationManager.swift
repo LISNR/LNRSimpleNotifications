@@ -33,16 +33,16 @@ public class LNRNotificationManager: NSObject {
     /** Shows a notification
      *  @param title The title of the notification view
      *  @param body The text that is displayed underneath the title
-     *  @param callback The block that should be executed when the user taps on the notification
+     *  @param onTap The block that should be executed when the user taps on the notification
      */
-    public func showNotification(title: String, body: String?, callback: LNRNotificationOperationCompletionBlock?) {
+    public func showNotification(title: String, body: String?, onTap: LNRNotificationOperationCompletionBlock?) {
         dispatch_async(dispatch_get_main_queue()) {
             if self.isNotificationActive {
                 self.dismissActiveNotification( { () -> Void in
-                    self.showNotification(title, body: body, callback: callback)
+                    self.showNotification(title, body: body, onTap: onTap)
                 })
             } else {
-                let notification = LNRNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, callback: callback, position: self.notificationsPosition, notificationManager: self)
+                let notification = LNRNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, onTap: onTap, position: self.notificationsPosition, notificationManager: self)
                 self.displayNotification(notification)
             }
         }

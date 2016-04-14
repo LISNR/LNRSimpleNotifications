@@ -45,12 +45,12 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param body The body of the notification view (optional)
      *  @param image A custom icon image (optional)
      *  @param duration The duration this notification should be displayed (optional)
-     *  @param callback The block that should be executed, when the user tapped on the notification
+     *  @param onTap The block that should be executed, when the user tapped on the notification
      *  @param position The position of the notification on the screen
      *  @param dismissingEnabled Should this notification be dismissed when the user taps/swipes it?
      */
     
-    init(title: String, body: String?, icon: UIImage?, duration: NSTimeInterval, callback: LNRNotificationOperationCompletionBlock?, position:LNRNotificationPosition, notificationManager: LNRNotificationManager) {
+    init(title: String, body: String?, icon: UIImage?, duration: NSTimeInterval, onTap: LNRNotificationOperationCompletionBlock?, position:LNRNotificationPosition, notificationManager: LNRNotificationManager) {
         
         self.title = title
         self.duration = duration
@@ -61,8 +61,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
             self.body = body
         }
         
-        if let callback = callback {
-            self.callback = callback
+        if let onTap = onTap {
+            self.onTap = onTap
         }
         
         let notificationWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
@@ -120,8 +120,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
             self.autoresizingMask = [UIViewAutoresizing.FlexibleWidth, UIViewAutoresizing.FlexibleTopMargin, UIViewAutoresizing.FlexibleBottomMargin]
         }
         
-        if self.callback != nil {
-            let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTap:"))
+        if self.onTap != nil {
+            let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LNRNotificationView.handleTap(_:)))
             self.addGestureRecognizer(tapGestureRecognizer)
         }
     }
@@ -196,7 +196,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     
     //MARK: Private
     
-    private var callback: LNRNotificationOperationCompletionBlock?
+    private var onTap: LNRNotificationOperationCompletionBlock?
     private let titleLabel: UILabel = UILabel()
     private let bodyLabel: UILabel = UILabel()
     private let iconImageView: UIImageView = UIImageView()
@@ -207,8 +207,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     
     func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
         if tapGestureRecognizer.state == UIGestureRecognizerState.Ended {
-            if self.callback != nil {
-                self.callback!()
+            if self.onTap != nil {
+                self.onTap!()
             }
         }
     }

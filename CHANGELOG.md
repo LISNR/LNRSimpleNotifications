@@ -2,8 +2,8 @@
 
 ## 0.4.0
 ### Changed
-- Demo app now uses LNRSimpleNotifications Pod rather than direct inclusion of the project files.
-- 
+- __LNRNotificationManager__ and __LNRNotificationView__ now use parameter name __onTap__ to refer to the on tap callback for notofications rather than the poorly-named __callback__. In the interface this slightly modifies the parameters of the __LNRNotificationView__ ```init:title:body:icon:duration:onTap:position:notificationManager:``` and the __LNRNotificationManager__ ```showNotification:title:body:onTap:``` methods. 
+- Demo app now uses __LNRSimpleNotifications__ Pod rather than direct inclusion of the project files.
 
 ## 0.3.0
 ### Changed
