@@ -1,0 +1,5 @@
+platform :ios, '9.0'
+
+target 'LNRSimpleNotificationsDemo' do
+	pod 'LNRSimpleNotifications'
+end

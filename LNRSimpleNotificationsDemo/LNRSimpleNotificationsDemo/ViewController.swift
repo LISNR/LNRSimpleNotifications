@@ -8,7 +8,7 @@
 
 import UIKit
 import AudioToolbox
-//import LNRSimpleNotifications // Necessary import to use Pod
+import LNRSimpleNotifications
 
 class ViewController: UIViewController {
     

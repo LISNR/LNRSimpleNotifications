@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.4.0
+### Changed
+- Demo app now uses LNRSimpleNotifications Pod rather than direct inclusion of the project files.
+- 
+
 ## 0.3.0
 ### Changed
 - __LNRSimpleNotifications__ class renamed __LNRNotificationManager__.
