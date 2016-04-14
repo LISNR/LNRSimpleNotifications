@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.1
+### Fixed
+- Adds missing ```use_frameworks!``` declaration in Demo project Podfile.
+
 ## 0.4.0
 ### Changed
 - __LNRNotificationManager__ and __LNRNotificationView__ now use parameter name __onTap__ to refer to the on tap callback for notofications rather than the poorly-named __callback__. In the interface this slightly modifies the parameters of the __LNRNotificationView__ ```init:title:body:icon:duration:onTap:position:notificationManager:``` and the __LNRNotificationManager__ ```showNotification:title:body:onTap:``` methods. 

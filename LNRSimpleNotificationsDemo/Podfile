@@ -1,5 +1,6 @@
 platform :ios, '9.0'
 
 target 'LNRSimpleNotificationsDemo' do
+	use_frameworks!
 	pod 'LNRSimpleNotifications'
 end
