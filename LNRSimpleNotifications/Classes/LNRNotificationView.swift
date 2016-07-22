@@ -65,7 +65,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
             self.onTap = onTap
         }
         
-        let notificationWidth: CGFloat = UIScreen.mainScreen().bounds.size.width
+        let notificationWidth: CGFloat = (UIApplication.sharedApplication().keyWindow?.bounds.width)!
         let padding: CGFloat = kLNRNotificationViewMinimumPadding
         
         super.init(frame: CGRect.zero)
@@ -148,7 +148,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     
     override public func layoutSubviews() {
         super.layoutSubviews()
-        self.notificationViewHeightAfterLayoutOutSubviews(kLNRNotificationViewMinimumPadding, notificationWidth: UIScreen.mainScreen().bounds.size.width)
+        self.notificationViewHeightAfterLayoutOutSubviews(kLNRNotificationViewMinimumPadding, notificationWidth: (UIApplication.sharedApplication().keyWindow?.bounds.width)!)
     }
     
     func notificationViewHeightAfterLayoutOutSubviews(padding: CGFloat, notificationWidth: CGFloat) -> CGFloat {
