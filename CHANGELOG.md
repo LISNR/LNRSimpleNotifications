@@ -2,7 +2,7 @@
 
 ## 0.4.2
 ### Fixed
-- Fixed notification width error on iPad in multitasking mode. __[Contributed by moshegutman]__
+- Fixed notification width error on iPad in multi-window mode. __[Contributed by moshegutman]__
 
 ## 0.4.1
 ### Fixed
