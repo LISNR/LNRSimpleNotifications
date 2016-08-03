@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.4.2
+### Fixed
+- Fixed notification width error on iPad in multitasking mode. __[Contributed by moshegutman]__
+
 ## 0.4.1
 ### Fixed
 - Adds missing ```use_frameworks!``` declaration in Demo project Podfile.
