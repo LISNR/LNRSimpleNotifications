@@ -8,7 +8,7 @@
 import UIKit
 import AudioToolbox
 
-public typealias LNRNotificationOperationCompletionBlock = Void -> Void
+public typealias LNRNotificationOperationCompletionBlock = (Void) -> Void
 
 let kLNRNotificationAnimationDuration = 0.3
 
@@ -16,16 +16,16 @@ let kLNRNotificationAnimationDuration = 0.3
  *  Define whether a notification view should be displayed at the top of the screen or the bottom of the screen
  */
 public enum LNRNotificationPosition {
-    case Top //Default position
-    case Bottom
+    case top //Default position
+    case bottom
 }
 
 /**
  *  Enum values can be passed to the duration parameter using syntax 'LNRNotificationDuration.Automatic.rawValue()'
  */
-public enum LNRNotificationDuration: NSTimeInterval {
-    case Default = 3.0 // Default is 3 seconds.
-    case Endless = -1.0 // Notification is displayed until it is dismissed by calling dismissActiveNotification
+public enum LNRNotificationDuration: TimeInterval {
+    case `default` = 3.0 // Default is 3 seconds.
+    case endless = -1.0 // Notification is displayed until it is dismissed by calling dismissActiveNotification
 }
 
 public class LNRNotificationManager: NSObject {
@@ -36,14 +36,14 @@ public class LNRNotificationManager: NSObject {
      *  @param onTap The block that should be executed when the user taps on the notification
      */
     public func showNotification(title: String, body: String?, onTap: LNRNotificationOperationCompletionBlock?) {
-        dispatch_async(dispatch_get_main_queue()) {
+        DispatchQueue.main.async {
             if self.isNotificationActive {
-                self.dismissActiveNotification( { () -> Void in
-                    self.showNotification(title, body: body, onTap: onTap)
+                self.dismissActiveNotification(completion: { () -> Void in
+                    self.showNotification(title: title, body: body, onTap: onTap)
                 })
             } else {
                 let notification = LNRNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, onTap: onTap, position: self.notificationsPosition, notificationManager: self)
-                self.displayNotification(notification)
+                self.displayNotification(notification: notification)
             }
         }
     }
@@ -55,7 +55,7 @@ public class LNRNotificationManager: NSObject {
     public func dismissActiveNotification(completion: LNRNotificationOperationCompletionBlock?) -> Bool {
         
         if isNotificationActive {
-            return self.dismissNotification(self.activeNotification!, dismissAnimationCompletion: { () -> Void in
+            return self.dismissNotification(notification: self.activeNotification!, dismissAnimationCompletion: { () -> Void in
                 self.activeNotification = nil
                 if completion != nil {
                     completion!()
@@ -75,19 +75,19 @@ public class LNRNotificationManager: NSObject {
         if notification.isDisplayed {
             var offScreenPoint: CGPoint
             
-            if notification.position != LNRNotificationPosition.Bottom {
-                offScreenPoint = CGPoint(x: notification.center.x, y: -(CGRectGetHeight(notification.frame) / 2.0))
+            if notification.position != LNRNotificationPosition.bottom {
+                offScreenPoint = CGPoint(x: notification.center.x, y: -(notification.frame.height / 2.0))
             } else {
-                offScreenPoint = CGPoint(x: notification.center.x, y: (UIScreen.mainScreen().bounds.size.height + CGRectGetHeight(notification.frame) / 2.0))
+                offScreenPoint = CGPoint(x: notification.center.x, y: (UIScreen.main.bounds.size.height + notification.frame.height / 2.0))
             }
             
-            UIView.animateWithDuration(kLNRNotificationAnimationDuration, animations: { () -> Void in
+            UIView.animate(withDuration: kLNRNotificationAnimationDuration, animations: { () -> Void in
                 notification.center = offScreenPoint
             })
             
             // Using a dispatch_after block to perform tasks after animation completion tasks because UIView's animateWithDuration:animations:completion: completion callback gets called immediatly due to the dismissNotification:dismissAnimationCompletion: method being called from within a dispatch_after block.
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(kLNRNotificationAnimationDuration * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue(), { [unowned self] () -> Void in
+            let delayTime = DispatchTime.now() + Double(Int64(kLNRNotificationAnimationDuration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
                 
                 notification.removeFromSuperview()
                 notification.isDisplayed = false
@@ -126,32 +126,32 @@ public class LNRNotificationManager: NSObject {
     /**
     *  Use to set the background color of notifications.
     */
-    public var notificationsBackgroundColor: UIColor = UIColor.whiteColor()
+    public var notificationsBackgroundColor: UIColor = UIColor.white
     
     /**
      *  Use to set the title text color of notifications
      */
-    public var notificationsTitleTextColor: UIColor = UIColor.blackColor()
+    public var notificationsTitleTextColor: UIColor = UIColor.black
     
     /**
      *  Use to set the body text color of notifications.
      */
-    public var notificationsBodyTextColor: UIColor = UIColor.blackColor()
+    public var notificationsBodyTextColor: UIColor = UIColor.black
     
     /**
      *  Use to set the title font of notifications.
      */
-    public var notificationsTitleFont: UIFont = UIFont.boldSystemFontOfSize(14.0)
+    public var notificationsTitleFont: UIFont = UIFont.boldSystemFont(ofSize: 14.0)
     
     /**
      *  Use to set the body font of notifications.
      */
-    public var notificationsBodyFont: UIFont = UIFont.systemFontOfSize(12.0)
+    public var notificationsBodyFont: UIFont = UIFont.systemFont(ofSize: 12.0)
     
     /**
      *  Use to set the bottom/top seperator color.
      */
-    public var notificationsSeperatorColor: UIColor = UIColor.clearColor()
+    public var notificationsSeperatorColor: UIColor = UIColor.clear
     
     /**
      *  Use to set the icon displayed with notifications.
@@ -161,12 +161,12 @@ public class LNRNotificationManager: NSObject {
     /**
      *  Use to set the duration notifications are displayed.
      */
-    public var notificationsDefaultDuration: NSTimeInterval = LNRNotificationDuration.Default.rawValue
+    public var notificationsDefaultDuration: TimeInterval = LNRNotificationDuration.default.rawValue
     
     /**
      *  Use to set the position of notifications on screen.
      */
-    public var notificationsPosition: LNRNotificationPosition = LNRNotificationPosition.Top
+    public var notificationsPosition: LNRNotificationPosition = LNRNotificationPosition.top
     
     /**
      *  Use to set the system sound played when a a notification is displayed.
@@ -181,31 +181,31 @@ public class LNRNotificationManager: NSObject {
         
         notification.isDisplayed = true
         
-        let mainWindow = UIApplication .sharedApplication().keyWindow
+        let mainWindow = UIApplication.shared.keyWindow
         mainWindow?.addSubview(notification)
         
         var toPoint: CGPoint
         
-        if notification.position != LNRNotificationPosition.Bottom {
-            toPoint = CGPointMake(notification.center.x, CGRectGetHeight(notification.frame) / 2.0)
+        if notification.position != LNRNotificationPosition.bottom {
+            toPoint = CGPoint(x: notification.center.x, y: notification.frame.height / 2.0)
         } else {
-            let y: CGFloat = UIScreen.mainScreen().bounds.size.height - (CGRectGetHeight(notification.frame) / 2.0)
-            toPoint = CGPointMake(notification.center.x, y)
+            let y: CGFloat = UIScreen.main.bounds.size.height - (notification.frame.height / 2.0)
+            toPoint = CGPoint(x: notification.center.x, y: y)
         }
         
         if let notificationSound = notificationSound {
             AudioServicesPlayAlertSound(notificationSound)
         }
         
-        UIView.animateWithDuration(kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.CurveEaseInOut, UIViewAnimationOptions.BeginFromCurrentState, UIViewAnimationOptions.AllowUserInteraction], animations: { () -> Void in
+        UIView.animate(withDuration: kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.allowUserInteraction], animations: { () -> Void in
             notification.center = toPoint
             }, completion: nil)
         
-        if notification.duration != LNRNotificationDuration.Endless.rawValue {
-            let notificationDisplayTime = notification.duration > 0 ? notification.duration : LNRNotificationDuration.Default.rawValue
-            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(notificationDisplayTime * Double(NSEC_PER_SEC)))
-            dispatch_after(delayTime, dispatch_get_main_queue(), { [unowned self] () -> Void in
-                self.dismissNotification(notification, dismissAnimationCompletion: nil)
+        if notification.duration != LNRNotificationDuration.endless.rawValue {
+            let notificationDisplayTime = notification.duration > 0 ? notification.duration : LNRNotificationDuration.default.rawValue
+            let delayTime = DispatchTime.now() + Double(Int64(notificationDisplayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
+                self.dismissNotification(notification: notification, dismissAnimationCompletion: nil)
                 })
         }
         
