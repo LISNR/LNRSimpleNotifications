@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     //MARK: IB Actions
     
     var incrementor = 0
-    @IBAction func showNotificationButtonPressed(sender: AnyObject) {
+    @IBAction func showNotificationButtonPressed(_ sender: AnyObject) {
         
         let notificationManager = (incrementor % 2 == 0) ? notificationManager1 : notificationManager2
         
