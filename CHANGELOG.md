@@ -1,8 +1,12 @@
 # Change Log
 
+## 0.5.1
+### Changed
+- Adds Swift Package Manager support.
+
 ## 0.5.0
 ### Changed
-- Swift 3 support.
+- Adds Swift 3 support.
 
 ## 0.4.2
 ### Fixed
