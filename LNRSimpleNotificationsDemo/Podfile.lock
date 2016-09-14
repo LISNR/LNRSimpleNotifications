@@ -1,0 +1,22 @@
+PODS:
+  - LNRSimpleNotifications (0.5.0)
+
+DEPENDENCIES:
+  - LNRSimpleNotifications (from `https://github.com/LISNR/LNRSimpleNotifications.git`, branch `swift3`)
+
+EXTERNAL SOURCES:
+  LNRSimpleNotifications:
+    :branch: swift3
+    :git: https://github.com/LISNR/LNRSimpleNotifications.git
+
+CHECKOUT OPTIONS:
+  LNRSimpleNotifications:
+    :commit: b7d7e6054d3ec1aff523fa537690c037a363e382
+    :git: https://github.com/LISNR/LNRSimpleNotifications.git
+
+SPEC CHECKSUMS:
+  LNRSimpleNotifications: 593f02643db1b198e3f375f1864a44cec52e9fba
+
+PODFILE CHECKSUM: 6862873de88c967630de92a11a6d095830769ec6
+
+COCOAPODS: 1.0.1

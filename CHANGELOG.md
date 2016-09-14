@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.5.1
+### Changed
+- Adds Swift Package Manager support.
+
+## 0.5.0
+### Changed
+- Adds Swift 3 support.
+
 ## 0.4.2
 ### Fixed
 - Fixed notification width error on iPad in multi-window mode. __[Contributed by moshegutman]__
