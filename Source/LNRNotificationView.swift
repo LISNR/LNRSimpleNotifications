@@ -140,7 +140,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param completion A block called after the completion of the dismiss animation. This block is only called if the notification was displayed on screen at the time dismissWithCompletion: was called.
      *  @return true if notification was displayed at the time dismissWithCompletion: was called, false if notification was not displayed.
      */
-    public func dismissWithCompletion(_ completion: LNRNotificationOperationCompletionBlock) -> Bool {
+    public func dismissWithCompletion(_ completion: @escaping LNRNotificationOperationCompletionBlock) -> Bool {
         return notificationManager.dismissNotification(notification: self, dismissAnimationCompletion: completion)
     }
     
