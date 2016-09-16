@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5469B334DCD2DFC66098029 /* Pods_LNRSimpleNotificationsDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3852B8E586919AE7BE309E1 /* Pods_LNRSimpleNotificationsDemo.framework */; };
 		FC7BA7C21BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FC7BA7C11BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png */; };
 		FC93F0C61B7A5BC100A05DC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C51B7A5BC100A05DC5 /* Images.xcassets */; };
 		FC93F0C91B7A5BC100A05DC5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0C71B7A5BC100A05DC5 /* LaunchScreen.xib */; };
@@ -14,11 +15,12 @@
 		FC93F0EE1B7A5E8600A05DC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */; };
 		FC93F0EF1B7A5E8600A05DC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */; };
 		FC93F0F11B7A5EC200A05DC5 /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = FC93F0F01B7A5EC200A05DC5 /* click.wav */; };
-		FCE5F6B71D8BAA0F0032FC69 /* LNRNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE5F6B51D8BAA0F0032FC69 /* LNRNotificationManager.swift */; };
-		FCE5F6B81D8BAA0F0032FC69 /* LNRNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE5F6B61D8BAA0F0032FC69 /* LNRNotificationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4079FA62D9DD4D3AF10411C0 /* Pods-LNRSimpleNotificationsDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LNRSimpleNotificationsDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LNRSimpleNotificationsDemo/Pods-LNRSimpleNotificationsDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C33490DA382AE8DB80127715 /* Pods-LNRSimpleNotificationsDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LNRSimpleNotificationsDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-LNRSimpleNotificationsDemo/Pods-LNRSimpleNotificationsDemo.release.xcconfig"; sourceTree = "<group>"; };
+		E3852B8E586919AE7BE309E1 /* Pods_LNRSimpleNotificationsDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LNRSimpleNotificationsDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC7BA7C11BCEA0E300A012D9 /* lisnr-cir-bw-notifications-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lisnr-cir-bw-notifications-icon@2x.png"; sourceTree = "<group>"; };
 		FC93F0B91B7A5BC100A05DC5 /* LNRSimpleNotificationsDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LNRSimpleNotificationsDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC93F0BD1B7A5BC100A05DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -28,8 +30,7 @@
 		FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FC93F0F01B7A5EC200A05DC5 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = click.wav; path = Resources/click.wav; sourceTree = "<group>"; };
-		FCE5F6B51D8BAA0F0032FC69 /* LNRNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRNotificationManager.swift; path = ../../Source/LNRNotificationManager.swift; sourceTree = "<group>"; };
-		FCE5F6B61D8BAA0F0032FC69 /* LNRNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRNotificationView.swift; path = ../../Source/LNRNotificationView.swift; sourceTree = "<group>"; };
+		FCE5F6BA1D8BAC1D0032FC69 /* LNRSimpleNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LNRSimpleNotifications.framework; path = "Pods/../build/Debug-iphoneos/LNRSimpleNotifications.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +38,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5469B334DCD2DFC66098029 /* Pods_LNRSimpleNotificationsDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C20C108122FB2CCEF091FE48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4079FA62D9DD4D3AF10411C0 /* Pods-LNRSimpleNotificationsDemo.debug.xcconfig */,
+				C33490DA382AE8DB80127715 /* Pods-LNRSimpleNotificationsDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		FC93F0B01B7A5BC100A05DC5 = {
 			isa = PBXGroup;
 			children = (
 				FC93F0BB1B7A5BC100A05DC5 /* LNRSimpleNotificationsDemo */,
 				FC93F0BA1B7A5BC100A05DC5 /* Products */,
+				FCE5F6B91D8BAC1D0032FC69 /* Frameworks */,
+				C20C108122FB2CCEF091FE48 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,8 +75,6 @@
 		FC93F0BB1B7A5BC100A05DC5 /* LNRSimpleNotificationsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				FCE5F6B51D8BAA0F0032FC69 /* LNRNotificationManager.swift */,
-				FCE5F6B61D8BAA0F0032FC69 /* LNRNotificationView.swift */,
 				FC93F0E91B7A5DCF00A05DC5 /* Resources */,
 				FC93F0EC1B7A5E8600A05DC5 /* AppDelegate.swift */,
 				FC93F0ED1B7A5E8600A05DC5 /* ViewController.swift */,
@@ -92,6 +103,15 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		FCE5F6B91D8BAC1D0032FC69 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FCE5F6BA1D8BAC1D0032FC69 /* LNRSimpleNotifications.framework */,
+				E3852B8E586919AE7BE309E1 /* Pods_LNRSimpleNotificationsDemo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,9 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FC93F0D81B7A5BC100A05DC5 /* Build configuration list for PBXNativeTarget "LNRSimpleNotificationsDemo" */;
 			buildPhases = (
+				8782C38309F63EB8685F525E /* [CP] Check Pods Manifest.lock */,
 				FC93F0B51B7A5BC100A05DC5 /* Sources */,
 				FC93F0B61B7A5BC100A05DC5 /* Frameworks */,
 				FC93F0B71B7A5BC100A05DC5 /* Resources */,
+				19CC4F48002E15C862D25FEA /* [CP] Embed Pods Frameworks */,
+				6CAAFF27F7C627E954D69717 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -162,14 +185,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		19CC4F48002E15C862D25FEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LNRSimpleNotificationsDemo/Pods-LNRSimpleNotificationsDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6CAAFF27F7C627E954D69717 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LNRSimpleNotificationsDemo/Pods-LNRSimpleNotificationsDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8782C38309F63EB8685F525E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FC93F0B51B7A5BC100A05DC5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCE5F6B71D8BAA0F0032FC69 /* LNRNotificationManager.swift in Sources */,
 				FC93F0EE1B7A5E8600A05DC5 /* AppDelegate.swift in Sources */,
-				FCE5F6B81D8BAA0F0032FC69 /* LNRNotificationView.swift in Sources */,
 				FC93F0EF1B7A5E8600A05DC5 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,8 +346,13 @@
 		};
 		FC93F0D91B7A5BC100A05DC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4079FA62D9DD4D3AF10411C0 /* Pods-LNRSimpleNotificationsDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = LNRSimpleNotificationsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lisnr.$(PRODUCT_NAME:rfc1034identifier)";
@@ -289,8 +363,13 @@
 		};
 		FC93F0DA1B7A5BC100A05DC5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C33490DA382AE8DB80127715 /* Pods-LNRSimpleNotificationsDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = LNRSimpleNotificationsDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.lisnr.$(PRODUCT_NAME:rfc1034identifier)";
