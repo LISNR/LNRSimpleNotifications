@@ -38,7 +38,7 @@ public class LNRNotificationManager: NSObject {
     public func showNotification(title: String, body: String?, onTap: LNRNotificationOperationCompletionBlock?) {
         DispatchQueue.main.async {
             if self.isNotificationActive {
-                self.dismissActiveNotification(completion: { () -> Void in
+                let _ = self.dismissActiveNotification(completion: { () -> Void in
                     self.showNotification(title: title, body: body, onTap: onTap)
                 })
             } else {
@@ -205,8 +205,8 @@ public class LNRNotificationManager: NSObject {
             let notificationDisplayTime = notification.duration > 0 ? notification.duration : LNRNotificationDuration.default.rawValue
             let delayTime = DispatchTime.now() + Double(Int64(notificationDisplayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
-                self.dismissNotification(notification: notification, dismissAnimationCompletion: nil)
-                })
+                let _ = self.dismissNotification(notification: notification, dismissAnimationCompletion: nil)
+            })
         }
         
     }

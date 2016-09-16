@@ -8,7 +8,6 @@
 
 import UIKit
 import AudioToolbox
-import LNRSimpleNotifications
 
 class ViewController: UIViewController {
     
@@ -59,7 +58,7 @@ class ViewController: UIViewController {
         
         notificationManager.showNotification(title: "Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo. Food truck iPhone normcore whatever selfies, actually ugh cliche PBR&B literally 8-bit. Farm-to-table retro VHS roof party, cold-pressed banh mi next level freegan .", onTap: { () -> Void in
             
-            notificationManager.dismissActiveNotification(completion: { () -> Void in
+            let _ = notificationManager.dismissActiveNotification(completion: { () -> Void in
                 print("Notification dismissed")
             })
         })
