@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.5.2
+### Changed
+- Adds __.swift-version__.
+
 ## 0.5.1
 ### Changed
 - Adds Swift Package Manager support.
