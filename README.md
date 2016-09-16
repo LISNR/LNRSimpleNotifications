@@ -23,7 +23,7 @@ We're glad you asked.
 
 If your project is in Swift:
 
-1. Add __LNRSimpleNotifications__ to your Podfile or Package.swift. The current master branch supports Swift 2.2 and 2.3. Use the __swift3__ branch if you need Swift 3. You can use the swift3 branch with Cocoapods by updating your Podfile entry to this snippet: ```pod 'LNRSimpleNotifications', :git => 'https://github.com/LISNR/LNRSimpleNotifications.git', :branch => 'swift3'```
+1. Add __LNRSimpleNotifications__ to your Podfile or Package.swift.
 2. Add the AudioToolbox framework to your project. 
 3. Add __import LNRSimpleNotifications__ in the classes you want to trigger or style your in-app notifications.
 4. (Optional) Style your notifications in the class managing your notification's initializer.
