@@ -148,6 +148,7 @@
 				TargetAttributes = {
 					FC93F0B81B7A5BC100A05DC5 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = G47H383S4Y;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -348,7 +349,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4079FA62D9DD4D3AF10411C0 /* Pods-LNRSimpleNotificationsDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G47H383S4Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -365,7 +368,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C33490DA382AE8DB80127715 /* Pods-LNRSimpleNotificationsDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G47H383S4Y;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
