@@ -58,10 +58,14 @@ func init() {
 	super.init()
         
 	notificationManager.notificationsPosition = LNRNotificationPosition.Top
-	notificationManager.notificationsBackgroundColor = UIColor.whiteColor()
-	notificationManager.notificationsTitleTextColor = UIColor.blackColor()
-	notificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
-	notificationManager.notificationsSeperatorColor = UIColor.grayColor()
+	notificationManager.notificationsBackgroundColor = UIColor.white
+	notificationManager.notificationsTitleTextColor = UIColor.black
+	notificationManager.notificationsBodyTextColor = UIColor.darkGray
+	notificationManager.notificationsSeperatorColor = UIColor.gray
+	notificationManager1.notificationsIconImageViewSetup = { imageView in
+			//This is the icon imageView setup. It'll only get called if you supply it an image.
+            imageView.backgroundColor = UIColor.red
+    }
         
 	var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
 	if let _ = alertSoundURL {

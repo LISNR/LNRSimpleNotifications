@@ -158,6 +158,9 @@ public class LNRNotificationManager: NSObject {
      */
     public var notificationsIcon: UIImage?
     
+    
+    
+    
     /**
      *  Use to set the duration notifications are displayed.
      */

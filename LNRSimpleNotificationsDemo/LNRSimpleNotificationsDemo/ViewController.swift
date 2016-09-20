@@ -23,9 +23,18 @@ class ViewController: UIViewController {
         notificationManager1.notificationsTitleTextColor = UIColor.black
         notificationManager1.notificationsBodyTextColor = UIColor.darkGray
         notificationManager1.notificationsSeperatorColor = UIColor.gray
+        notificationManager1.notificationsDefaultDuration = 10
         notificationManager1.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
         notificationManager1.notificationsIconImageViewSetup = { imageView in
             imageView.backgroundColor = UIColor.red
+        }
+        notificationManager1.notificationsIconAsyncLoader = { completionHandler in
+            let url = URL(string: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                guard let data = data  else { return }
+                let downloadedData = UIImage(data: data)
+                completionHandler(downloadedData)
+            }).resume()
         }
         
         let alertSoundURL: URL? = Bundle.main.url(forResource: "click", withExtension: "wav")
