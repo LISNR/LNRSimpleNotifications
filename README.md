@@ -44,7 +44,7 @@ To run the demo project clone the repo, and run `pod install` from the Example d
 ## How do I use it?
 Configure your notification styles once in your app. The init method for whatever class is triggering your in-app notifications is a good choice.
 
-__The Class Triggering Notifications__
+### The Class Triggering Notifications
 
 ```swift
 import LNRSimpleNotifications
@@ -58,10 +58,14 @@ func init() {
 	super.init()
         
 	notificationManager.notificationsPosition = LNRNotificationPosition.Top
-	notificationManager.notificationsBackgroundColor = UIColor.whiteColor()
-	notificationManager.notificationsTitleTextColor = UIColor.blackColor()
-	notificationManager.notificationsBodyTextColor = UIColor.darkGrayColor()
-	notificationManager.notificationsSeperatorColor = UIColor.grayColor()
+	notificationManager.notificationsBackgroundColor = UIColor.white
+	notificationManager.notificationsTitleTextColor = UIColor.black
+	notificationManager.notificationsBodyTextColor = UIColor.darkGray
+	notificationManager.notificationsSeperatorColor = UIColor.gray
+	notificationManager1.notificationsIconImageViewSetup = { imageView in
+			//This is the icon imageView setup. It'll only get called if you supply it an image.
+            imageView.backgroundColor = UIColor.red
+    }
         
 	var alertSoundURL: NSURL? = NSBundle.mainBundle().URLForResource("click", withExtension: "wav")
 	if let _ = alertSoundURL {
@@ -79,7 +83,7 @@ You can also configure an icon that will appear in your notification and set a c
 If you don't set any theme options your notifications will default to black text on a white background with no notification sound or icon.
 
 
-__The Class Triggering Notifications__
+### The Class Triggering Notifications
 
 ```swift
 
@@ -94,6 +98,56 @@ func methodThatTriggersNotification:(title: String, body: String) {
 		})
 	})
 }
+```
+
+### Notifications with Async Image Loader
+Perhaps you'd like an asynchronous image. You'll need to create a variable of `LNRNotificationAsyncImageBlock` and pass it in on the show `showNotification` method.
+
+**Important:** You will need to set an image on the Manager Instance like so:
+
+```swift
+notificationManager.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
+```
+
+
+```swift
+let imageAsyncLoader : LNRNotificationAsyncImageBlock = { completionHandler in
+            let url = URL(string: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")
+            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
+                guard let data = data  else { return }
+                let downloadedData = UIImage(data: data)
+                completionHandler(downloadedData)
+            }).resume()
+        }
+
+
+// Important to set the placeholder image
+notificationManager.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
+// Call the showNotification method
+notificationManager.showNotification(
+            title: "Hipster Ipsum",
+            body: "I love nier",
+            imageAsyncLoader:  imageAsyncLoader
+        )
+```
+
+### Customizing the Icon UIImageView
+
+You'll need to create a variable conforming to the block `LNRNotificationImageViewSetupBlock`. Then you can pass it into the `showNotification` block.  
+
+```swift
+let imageViewSetup : LNRNotificationImageViewSetupBlock = { imageView in
+            imageView.backgroundColor = UIColor.red
+        }
+
+// Important to set the placeholder image
+notificationManager.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
+// Call the showNotification method
+notificationManager.showNotification(
+            title: "Hipster Ipsum",
+            body: "I love nier",
+            imageViewSetup:  imageViewSetup
+        )
 ```
 
 ## Who's using LNRSimpleNotifications?
