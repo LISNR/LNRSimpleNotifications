@@ -24,6 +24,9 @@ class ViewController: UIViewController {
         notificationManager1.notificationsBodyTextColor = UIColor.darkGray
         notificationManager1.notificationsSeperatorColor = UIColor.gray
         notificationManager1.notificationsIcon = UIImage(named: "lisnr-cir-bw-notifications-icon")
+        notificationManager1.notificationsIconImageViewSetup = { imageView in
+            imageView.backgroundColor = UIColor.red
+        }
         
         let alertSoundURL: URL? = Bundle.main.url(forResource: "click", withExtension: "wav")
         if let _ = alertSoundURL {
