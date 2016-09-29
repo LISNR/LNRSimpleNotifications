@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.5.3
+### Changed
+- Adds Carthage Support
+
 ## 0.5.2
 ### Changed
 - Adds __.swift-version__.
