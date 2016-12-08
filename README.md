@@ -119,7 +119,7 @@ Absolutely!
 
 LISNR is a startup leveraging high frequency, inaudible sounds waves to transmit data over audio. Using our technology we have activated synchronized light shows at concerts, triggered location-based notifications, rewarded music fans with behind-the-scenes content, delivered at-shelf product information, and solved pain points in sports stadiums for the Dallas Cowboys, Swedish House Mafia, Roc Nation, AT&T, Budweiser, and many more.
 
-Want to know more about LISNR? Reach out to [dev@lisnr.com](dev@lisnr.com).
+Want to know more about LISNR? Reach out to [inquiries@lisnr.com](inquiries@lisnr.com).
 
 ## License
 
