@@ -28,6 +28,18 @@ public enum LNRNotificationDuration: TimeInterval {
     case endless = -1.0 // Notification is displayed until it is dismissed by calling dismissActiveNotification
 }
 
+class LNRNotification {
+    var title: String
+    var body: String
+    var onTap: LNRNotificationOperationCompletionBlock
+
+    init(title: String, body: String, onTap: @escaping LNRNotificationOperationCompletionBlock) {
+        self.title = title
+        self.body = body
+        self.onTap = onTap
+    }
+}
+
 public class LNRNotificationManager: NSObject {
     
     /** Shows a notification
@@ -38,9 +50,14 @@ public class LNRNotificationManager: NSObject {
     public func showNotification(title: String, body: String?, onTap: LNRNotificationOperationCompletionBlock?) {
         DispatchQueue.main.async {
             if self.isNotificationActive {
-                let _ = self.dismissActiveNotification(completion: { () -> Void in
-                    self.showNotification(title: title, body: body, onTap: onTap)
-                })
+                if (self.notificationsQueueEnabled) {
+                    let notification = LNRNotification(title: title, body: body!, onTap: onTap!)
+                    self.notificationsQueue.append(notification)
+                } else {
+                    let _ = self.dismissActiveNotification(completion: { () -> Void in
+                        self.showNotification(title: title, body: body, onTap: onTap)
+                    })
+                }
             } else {
                 let notification = LNRNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, onTap: onTap, position: self.notificationsPosition, notificationManager: self)
                 self.displayNotification(notification: notification)
@@ -99,7 +116,12 @@ public class LNRNotificationManager: NSObject {
                 if dismissAnimationCompletion != nil {
                     dismissAnimationCompletion!()
                 }
-                })
+
+                if let queuedNotification = self.notificationsQueue.first {
+                    self.notificationsQueue.remove(at: 0)
+                    self.showNotification(title: queuedNotification.title, body: queuedNotification.body, onTap: queuedNotification.onTap)
+                }
+            })
             
             return true
         }
@@ -121,11 +143,21 @@ public class LNRNotificationManager: NSObject {
      */
     public var activeNotification: LNRNotificationView?
     
+    /**
+     *  Use to set if notifications can be queued
+     */
+    public var notificationsQueueEnabled = false
+
+    /**
+     *  The Notifications queue
+     */
+    private var notificationsQueue = [LNRNotification]()
+
     // MARK: Notification Styling
     
     /**
-    *  Use to set the background color of notifications.
-    */
+     *  Use to set the background color of notifications.
+     */
     public var notificationsBackgroundColor: UIColor = UIColor.white
     
     /**
@@ -199,7 +231,7 @@ public class LNRNotificationManager: NSObject {
         
         UIView.animate(withDuration: kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.allowUserInteraction], animations: { () -> Void in
             notification.center = toPoint
-            }, completion: nil)
+        }, completion: nil)
         
         if notification.duration != LNRNotificationDuration.endless.rawValue {
             let notificationDisplayTime = notification.duration > 0 ? notification.duration : LNRNotificationDuration.default.rawValue
