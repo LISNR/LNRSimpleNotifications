@@ -45,7 +45,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param body The body of the notification view (optional)
      *  @param image A custom icon image (optional)
      *  @param duration The duration this notification should be displayed (optional)
-     *  @param onTap The block that should be executed, when the user tapped on the notification
+     *  @param onTap The block that should be executed when the user taps on the notification
      *  @param position The position of the notification on the screen
      *  @param dismissingEnabled Should this notification be dismissed when the user taps/swipes it?
      */
@@ -120,10 +120,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
             self.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
         }
         
-        if self.onTap != nil {
-            let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LNRNotificationView.handleTap(tapGestureRecognizer:)))
-            self.addGestureRecognizer(tapGestureRecognizer)
-        }
+        let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LNRNotificationView.handleTap(tapGestureRecognizer:)))
+        self.addGestureRecognizer(tapGestureRecognizer)
     }
     
     /**
@@ -140,8 +138,8 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param completion A block called after the completion of the dismiss animation. This block is only called if the notification was displayed on screen at the time dismissWithCompletion: was called.
      *  @return true if notification was displayed at the time dismissWithCompletion: was called, false if notification was not displayed.
      */
-    public func dismissWithCompletion(_ completion: @escaping LNRNotificationOperationCompletionBlock) -> Bool {
-        return notificationManager.dismissNotification(notification: self, dismissAnimationCompletion: completion)
+    public func dismissWithCompletion(_ completion: LNRNotificationOperationCompletionBlock?) -> Bool {
+        return notificationManager.dismissNotificationView(notificationView: self, dismissAnimationCompletion: completion)
     }
     
     //MARK: Layout
@@ -210,6 +208,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
             if self.onTap != nil {
                 self.onTap!()
             }
+            let _ = dismissWithCompletion(nil)
         }
     }
     

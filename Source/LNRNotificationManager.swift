@@ -35,27 +35,27 @@ public class LNRNotificationManager: NSObject {
      *  @param body The text that is displayed underneath the title
      *  @param onTap The block that should be executed when the user taps on the notification
      */
-    public func showNotification(title: String, body: String?, onTap: LNRNotificationOperationCompletionBlock?) {
+    public func showNotification(notification: LNRNotification) {
         DispatchQueue.main.async {
             if self.isNotificationActive {
                 let _ = self.dismissActiveNotification(completion: { () -> Void in
-                    self.showNotification(title: title, body: body, onTap: onTap)
+                    self.showNotification(notification: notification)
                 })
             } else {
-                let notification = LNRNotificationView(title: title, body: body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, onTap: onTap, position: self.notificationsPosition, notificationManager: self)
-                self.displayNotification(notification: notification)
+                let notificationView = LNRNotificationView(title: notification.title, body: notification.body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, onTap: notification.onTap, position: self.notificationsPosition, notificationManager: self)
+                self.displayNotificationView(notification: notificationView)
             }
         }
     }
     
-    /** Dismisses the currently displayed notification with a completion block called after the notification disappears off screen
+    /** Dismisses the currently displayed notificationView with a completion block called after the notification disappears off screen
      *  @param completion The block that should be executed when the notification finishes dismissing
      *  @return true if notification dismissal was triggered, false if no notification was currently displayed.
      */
     public func dismissActiveNotification(completion: LNRNotificationOperationCompletionBlock?) -> Bool {
         
         if isNotificationActive {
-            return self.dismissNotification(notification: self.activeNotification!, dismissAnimationCompletion: { () -> Void in
+            return self.dismissNotificationView(notificationView: self.activeNotification!, dismissAnimationCompletion: { () -> Void in
                 self.activeNotification = nil
                 if completion != nil {
                     completion!()
@@ -66,33 +66,33 @@ public class LNRNotificationManager: NSObject {
         return false
     }
     
-    /** Dismisses the notification passed as an argument
+    /** Dismisses the notificationView passed as an argument
      *  @param dismissAnimationCompletion The block that should be executed when the notification finishes dismissing
      *  @return true if notification dismissal was triggered, false if notification was not currently displayed.
      */
-    public func dismissNotification(notification: LNRNotificationView, dismissAnimationCompletion:LNRNotificationOperationCompletionBlock?) -> Bool {
+    public func dismissNotificationView(notificationView: LNRNotificationView, dismissAnimationCompletion:LNRNotificationOperationCompletionBlock?) -> Bool {
         
-        if notification.isDisplayed {
+        if notificationView.isDisplayed {
             var offScreenPoint: CGPoint
             
-            if notification.position != LNRNotificationPosition.bottom {
-                offScreenPoint = CGPoint(x: notification.center.x, y: -(notification.frame.height / 2.0))
+            if notificationView.position != LNRNotificationPosition.bottom {
+                offScreenPoint = CGPoint(x: notificationView.center.x, y: -(notificationView.frame.height / 2.0))
             } else {
-                offScreenPoint = CGPoint(x: notification.center.x, y: (UIScreen.main.bounds.size.height + notification.frame.height / 2.0))
+                offScreenPoint = CGPoint(x: notificationView.center.x, y: (UIScreen.main.bounds.size.height + notificationView.frame.height / 2.0))
             }
             
             UIView.animate(withDuration: kLNRNotificationAnimationDuration, animations: { () -> Void in
-                notification.center = offScreenPoint
+                notificationView.center = offScreenPoint
             })
             
-            // Using a dispatch_after block to perform tasks after animation completion tasks because UIView's animateWithDuration:animations:completion: completion callback gets called immediatly due to the dismissNotification:dismissAnimationCompletion: method being called from within a dispatch_after block.
+            // Using a dispatch_after block to perform tasks after animation completion tasks because UIView's animateWithDuration:animations:completion: completion callback gets called immediatly due to the dismissNotificationView:dismissAnimationCompletion: method being called from within a dispatch_after block.
             let delayTime = DispatchTime.now() + Double(Int64(kLNRNotificationAnimationDuration * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
                 
-                notification.removeFromSuperview()
-                notification.isDisplayed = false
+                notificationView.removeFromSuperview()
+                notificationView.isDisplayed = false
                 
-                if self.activeNotification == notification {
+                if self.activeNotification == notificationView {
                     self.activeNotification = nil
                 }
                 
@@ -175,7 +175,7 @@ public class LNRNotificationManager: NSObject {
     
     // MARK: Internal
     
-    private func displayNotification(notification: LNRNotificationView) {
+    private func displayNotificationView(notification: LNRNotificationView) {
         
         self.activeNotification = notification
         
@@ -205,7 +205,7 @@ public class LNRNotificationManager: NSObject {
             let notificationDisplayTime = notification.duration > 0 ? notification.duration : LNRNotificationDuration.default.rawValue
             let delayTime = DispatchTime.now() + Double(Int64(notificationDisplayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
-                let _ = self.dismissNotification(notification: notification, dismissAnimationCompletion: nil)
+                let _ = self.dismissNotificationView(notificationView: notification, dismissAnimationCompletion: nil)
             })
         }
         
