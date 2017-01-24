@@ -42,8 +42,8 @@ public class LNRNotificationManager: NSObject {
                     self.showNotification(notification: notification)
                 })
             } else {
-                let notificationView = LNRNotificationView(title: notification.title, body: notification.body, icon: self.notificationsIcon, duration: self.notificationsDefaultDuration, onTap: notification.onTap, position: self.notificationsPosition, notificationManager: self)
-                self.displayNotificationView(notification: notificationView)
+                let notificationView = LNRNotificationView(notification: notification, icon: self.notificationsIcon, notificationManager: self)
+                self.displayNotificationView(notificationView: notificationView)
             }
         }
     }
@@ -75,7 +75,7 @@ public class LNRNotificationManager: NSObject {
         if notificationView.isDisplayed {
             var offScreenPoint: CGPoint
             
-            if notificationView.position != LNRNotificationPosition.bottom {
+            if notificationsPosition != LNRNotificationPosition.bottom {
                 offScreenPoint = CGPoint(x: notificationView.center.x, y: -(notificationView.frame.height / 2.0))
             } else {
                 offScreenPoint = CGPoint(x: notificationView.center.x, y: (UIScreen.main.bounds.size.height + notificationView.frame.height / 2.0))
@@ -99,7 +99,7 @@ public class LNRNotificationManager: NSObject {
                 if dismissAnimationCompletion != nil {
                     dismissAnimationCompletion!()
                 }
-                })
+            })
             
             return true
         }
@@ -159,11 +159,6 @@ public class LNRNotificationManager: NSObject {
     public var notificationsIcon: UIImage?
     
     /**
-     *  Use to set the duration notifications are displayed.
-     */
-    public var notificationsDefaultDuration: TimeInterval = LNRNotificationDuration.default.rawValue
-    
-    /**
      *  Use to set the position of notifications on screen.
      */
     public var notificationsPosition: LNRNotificationPosition = LNRNotificationPosition.top
@@ -175,22 +170,22 @@ public class LNRNotificationManager: NSObject {
     
     // MARK: Internal
     
-    private func displayNotificationView(notification: LNRNotificationView) {
+    private func displayNotificationView(notificationView: LNRNotificationView) {
         
-        self.activeNotification = notification
+        self.activeNotification = notificationView
         
-        notification.isDisplayed = true
+        notificationView.isDisplayed = true
         
         let mainWindow = UIApplication.shared.keyWindow
-        mainWindow?.addSubview(notification)
+        mainWindow?.addSubview(notificationView)
         
         var toPoint: CGPoint
         
-        if notification.position != LNRNotificationPosition.bottom {
-            toPoint = CGPoint(x: notification.center.x, y: notification.frame.height / 2.0)
+        if notificationsPosition != LNRNotificationPosition.bottom {
+            toPoint = CGPoint(x: notificationView.center.x, y: notificationView.frame.height / 2.0)
         } else {
-            let y: CGFloat = UIScreen.main.bounds.size.height - (notification.frame.height / 2.0)
-            toPoint = CGPoint(x: notification.center.x, y: y)
+            let y: CGFloat = UIScreen.main.bounds.size.height - (notificationView.frame.height / 2.0)
+            toPoint = CGPoint(x: notificationView.center.x, y: y)
         }
         
         if let notificationSound = notificationSound {
@@ -198,14 +193,19 @@ public class LNRNotificationManager: NSObject {
         }
         
         UIView.animate(withDuration: kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.allowUserInteraction], animations: { () -> Void in
-            notification.center = toPoint
+            notificationView.center = toPoint
             }, completion: nil)
         
-        if notification.duration != LNRNotificationDuration.endless.rawValue {
-            let notificationDisplayTime = notification.duration > 0 ? notification.duration : LNRNotificationDuration.default.rawValue
+        if notificationView.notification.duration != LNRNotificationDuration.endless.rawValue {
+            let notificationDisplayTime = notificationView.notification.duration > 0 ? notificationView.notification.duration : LNRNotificationDuration.default.rawValue
             let delayTime = DispatchTime.now() + Double(Int64(notificationDisplayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
-                let _ = self.dismissNotificationView(notificationView: notification, dismissAnimationCompletion: nil)
+                let dismissed = self.dismissNotificationView(notificationView: notificationView, dismissAnimationCompletion: nil)
+                if dismissed {
+                    if let onTimeout = notificationView.notification.onTimeout {
+                        onTimeout()
+                    }
+                }
             })
         }
         

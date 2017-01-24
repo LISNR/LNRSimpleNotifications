@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.6.0
+### Changed
+- Adds __LNRNotificationQueue__ class to queue and display notifications.
+- Adds __LNRNotification__ to encapsulate notification content. Notifications are now triggered or queued by passing a __LNRNotification__.
+- Notification duration is no longer a property of the __LNRNotificationManager__, it is a property of each __LNRNotification__.
+
 ## 0.5.3
 ### Changed
 - Adds Carthage Support

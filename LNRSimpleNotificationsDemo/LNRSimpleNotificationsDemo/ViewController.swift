@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        notificationManager1.notificationsPosition = LNRNotificationPosition.top
+        notificationManager1.notificationsPosition = .top
         notificationManager1.notificationsBackgroundColor = UIColor.white
         notificationManager1.notificationsTitleTextColor = UIColor.black
         notificationManager1.notificationsBodyTextColor = UIColor.darkGray
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             notificationManager1.notificationSound = mySound
         }
         
-        notificationManager2.notificationsPosition = LNRNotificationPosition.bottom
+        notificationManager2.notificationsPosition = .bottom
         notificationManager2.notificationsBackgroundColor = UIColor.black
         notificationManager2.notificationsTitleTextColor = UIColor.white
         notificationManager2.notificationsBodyTextColor = UIColor.white
@@ -45,11 +45,6 @@ class ViewController: UIViewController {
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: IB Actions
     
     var incrementor = 0
@@ -57,15 +52,13 @@ class ViewController: UIViewController {
         
         let notificationManager = (incrementor % 2 == 0) ? notificationManager1 : notificationManager2
         
-        notificationManager.showNotification(title: "Hipster Ipsum", body: "Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo. Food truck iPhone normcore whatever selfies, actually ugh cliche PBR&B literally 8-bit. Farm-to-table retro VHS roof party, cold-pressed banh mi next level freegan .", onTap: { () -> Void in
-            
-            let _ = notificationManager.dismissActiveNotification(completion: { () -> Void in
-                print("Notification dismissed")
-            })
-        })
+        notificationManager.showNotification(notification: LNRNotification(title: "Hipster Ipsum", body: "\(incrementor) Schlitz you probably haven't heard of them raw denim brunch. Twee Kickstarter Truffaut cold-pressed trout banjo. Food truck iPhone normcore whatever selfies, actually ugh cliche PBR&B literally 8-bit. Farm-to-table retro VHS roof party, cold-pressed banh mi next level freegan .", duration: LNRNotificationDuration.default.rawValue, onTap: { () -> Void in
+            print("Notification dismissed")
+        }, onTimeout: { () -> Void in
+            print("Notification Timed Out")
+        }))
         
         incrementor += 1
-        
     }
     
 }

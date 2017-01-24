@@ -82,17 +82,16 @@ If you don't set any theme options your notifications will default to black text
 __The Class Triggering Notifications__
 
 ```swift
-
 let notificationManager = LNRNotificationManager()
 
 ### 
 
 func methodThatTriggersNotification:(title: String, body: String) {
-	notificationManager.showNotification("Test Title", body: "Test Body", callback: { () -> Void in
-		notificationManager.dismissActiveNotification({ () -> Void in
-			println("Notification dismissed")
-		})
-	})
+	notificationManager.showNotification(notification: LNRNotification(title: title, body: body, duration: LNRNotificationDuration.default.rawValue, onTap: { () -> Void in
+		print("Notification Dismissed")
+	}, onTimeout: { () -> Void in
+		print("Notification Timed Out")
+	}))
 }
 ```
 
