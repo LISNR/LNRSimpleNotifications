@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "LNRSimpleNotifications"
-  s.version          = "0.6.0"
+  s.version          = "0.6.1"
   s.summary          = "Simple Swift in-app notifications."
   s.description      = <<-DESC
                        LNRSimpleNotifications is a simplified Swift port of TSMessages. It's built for developers who want beautiful in-app notifications that can be set up in minutes.

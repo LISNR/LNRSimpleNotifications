@@ -1,9 +1,8 @@
 //
-//  LNRSimpleNotifications.h
 //  LNRSimpleNotifications
 //
-//  Created by Jon Schneider on 9/29/16.
-//  Copyright © 2016 LISNR. All rights reserved.
+//  LNRSimpleNotifications: Modifications of TSMessages Copyright (c) 2015 LISNR, inc.
+//  TSMessages: Copyright (c) 2014 Toursprung, Felix Krause <krausefx@gmail.com>
 //
 
 #import <UIKit/UIKit.h>

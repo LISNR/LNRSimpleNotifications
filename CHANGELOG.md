@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.6.1
+### Changed
+- Fixed Carthage building.
+
 ## 0.6.0
 ### Changed
 - Adds __LNRNotificationQueue__ class to queue and display notifications.

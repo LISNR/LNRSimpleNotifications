@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FCC23C161E51FD52003EBD1D /* LNRNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC23C141E51FD52003EBD1D /* LNRNotification.swift */; };
+		FCC23C171E51FD52003EBD1D /* LNRNotificationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC23C151E51FD52003EBD1D /* LNRNotificationQueue.swift */; };
 		FCF2A4A01D9D978000C13050 /* LNRSimpleNotifications.h in Headers */ = {isa = PBXBuildFile; fileRef = FCF2A49E1D9D978000C13050 /* LNRSimpleNotifications.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCF2A4B11D9D99B200C13050 /* LNRNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2A4AF1D9D99B200C13050 /* LNRNotificationManager.swift */; };
 		FCF2A4B21D9D99B200C13050 /* LNRNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCF2A4B01D9D99B200C13050 /* LNRNotificationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FCC23C141E51FD52003EBD1D /* LNRNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRNotification.swift; path = ../../Source/LNRNotification.swift; sourceTree = "<group>"; };
+		FCC23C151E51FD52003EBD1D /* LNRNotificationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LNRNotificationQueue.swift; path = ../../Source/LNRNotificationQueue.swift; sourceTree = "<group>"; };
 		FCF2A49B1D9D978000C13050 /* LNRSimpleNotifications.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LNRSimpleNotifications.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCF2A49E1D9D978000C13050 /* LNRSimpleNotifications.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNRSimpleNotifications.h; sourceTree = "<group>"; };
 		FCF2A49F1D9D978000C13050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 		FCF2A4AA1D9D993A00C13050 /* LNRSimpleNotifications */ = {
 			isa = PBXGroup;
 			children = (
+				FCC23C141E51FD52003EBD1D /* LNRNotification.swift */,
+				FCC23C151E51FD52003EBD1D /* LNRNotificationQueue.swift */,
 				FCF2A4AF1D9D99B200C13050 /* LNRNotificationManager.swift */,
 				FCF2A4B01D9D99B200C13050 /* LNRNotificationView.swift */,
 			);
@@ -148,7 +154,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCF2A4B21D9D99B200C13050 /* LNRNotificationView.swift in Sources */,
+				FCC23C171E51FD52003EBD1D /* LNRNotificationQueue.swift in Sources */,
 				FCF2A4B11D9D99B200C13050 /* LNRNotificationManager.swift in Sources */,
+				FCC23C161E51FD52003EBD1D /* LNRNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +265,7 @@
 		FCF2A4A41D9D978000C13050 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(VALID_ARCHS)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
@@ -278,6 +287,7 @@
 		FCF2A4A51D9D978000C13050 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(VALID_ARCHS)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
