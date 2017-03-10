@@ -19,7 +19,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         notificationManager1.notificationsPosition = .top
-        notificationManager1.notificationsBackgroundColor = UIColor.white
+        notificationManager1.shouldOverlapStatusBar = true
+        notificationManager1.notificationsBackgroundColor = UIColor.yellow
         notificationManager1.notificationsTitleTextColor = UIColor.black
         notificationManager1.notificationsBodyTextColor = UIColor.darkGray
         notificationManager1.notificationsSeperatorColor = UIColor.gray

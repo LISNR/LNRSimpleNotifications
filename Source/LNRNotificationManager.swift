@@ -175,12 +175,12 @@ public class LNRNotificationManager: NSObject {
      */
     public var notificationSound: SystemSoundID?
     
-    let mainWindow = UIApplication.shared.keyWindow
+    fileprivate var mainWindow: UIWindow?
     
     // MARK: Internal
     
     private func displayNotificationView(notificationView: LNRNotificationView) {
-        
+        mainWindow = UIApplication.shared.keyWindow
         self.activeNotification = notificationView
         
         notificationView.isDisplayed = true
