@@ -101,6 +101,8 @@ public class LNRNotificationManager: NSObject {
                 }
             })
             
+            mainWindow?.windowLevel = UIWindowLevelNormal
+            
             return true
         }
         
@@ -124,8 +126,8 @@ public class LNRNotificationManager: NSObject {
     // MARK: Notification Styling
     
     /**
-    *  Use to set the background color of notifications.
-    */
+     *  Use to set the background color of notifications.
+     */
     public var notificationsBackgroundColor: UIColor = UIColor.white
     
     /**
@@ -159,6 +161,11 @@ public class LNRNotificationManager: NSObject {
     public var notificationsIcon: UIImage?
     
     /**
+     *  Use to set the status bar hidden or not.
+     */
+    public var shouldOverlapStatusBar: Bool = false
+    
+    /**
      *  Use to set the position of notifications on screen.
      */
     public var notificationsPosition: LNRNotificationPosition = LNRNotificationPosition.top
@@ -168,6 +175,8 @@ public class LNRNotificationManager: NSObject {
      */
     public var notificationSound: SystemSoundID?
     
+    let mainWindow = UIApplication.shared.keyWindow
+    
     // MARK: Internal
     
     private func displayNotificationView(notificationView: LNRNotificationView) {
@@ -176,16 +185,23 @@ public class LNRNotificationManager: NSObject {
         
         notificationView.isDisplayed = true
         
-        let mainWindow = UIApplication.shared.keyWindow
         mainWindow?.addSubview(notificationView)
         
         var toPoint: CGPoint
         
         if notificationsPosition != LNRNotificationPosition.bottom {
-            toPoint = CGPoint(x: notificationView.center.x, y: notificationView.frame.height / 2.0)
-        } else {
-            let y: CGFloat = UIScreen.main.bounds.size.height - (notificationView.frame.height / 2.0)
+            var y =  notificationView.frame.height / 2.0
+            y = shouldOverlapStatusBar ? (y - kStatusBarHeight) : y
             toPoint = CGPoint(x: notificationView.center.x, y: y)
+        } else {
+            var y: CGFloat = UIScreen.main.bounds.size.height - (notificationView.frame.height / 2.0)
+            toPoint = CGPoint(x: notificationView.center.x, y: y)
+        }
+        
+        if shouldOverlapStatusBar {
+            mainWindow?.windowLevel = UIWindowLevelStatusBar
+        } else {
+            mainWindow?.windowLevel = UIWindowLevelNormal
         }
         
         if let notificationSound = notificationSound {
@@ -194,7 +210,7 @@ public class LNRNotificationManager: NSObject {
         
         UIView.animate(withDuration: kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.allowUserInteraction], animations: { () -> Void in
             notificationView.center = toPoint
-            }, completion: nil)
+        }, completion: nil)
         
         if notificationView.notification.duration != LNRNotificationDuration.endless.rawValue {
             let notificationDisplayTime = notificationView.notification.duration > 0 ? notificationView.notification.duration : LNRNotificationDuration.default.rawValue
