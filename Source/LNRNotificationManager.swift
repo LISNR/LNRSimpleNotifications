@@ -8,7 +8,7 @@
 import UIKit
 import AudioToolbox
 
-public typealias LNRNotificationOperationCompletionBlock = (Void) -> Void
+public typealias LNRNotificationOperationCompletionBlock = () -> Void
 
 let kLNRNotificationAnimationDuration = 0.3
 

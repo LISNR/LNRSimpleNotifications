@@ -1,5 +1,10 @@
 # Change Log
 
+## 0.7.0
+### Changed
+- Updated for Swift 4.
+- Update swift-version file to 4.0.
+
 ## 0.6.1
 ### Changed
 - Fixed Carthage building.

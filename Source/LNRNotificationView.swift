@@ -172,7 +172,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     
     //MARK: Tap Recognition
     
-    func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
         if tapGestureRecognizer.state == UIGestureRecognizerState.ended {
             let _ = dismissWithCompletion(nil)
             if self.notification.onTap != nil {
