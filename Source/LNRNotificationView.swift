@@ -53,7 +53,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
         self.addSubview(self.titleLabel)
         
         if let bodyText = notification.body {
-            if bodyText.characters.count > 0 {
+            if bodyText.count > 0 {
                 self.bodyLabel.text = bodyText
                 self.bodyLabel.textColor = notificationManager.notificationsBodyTextColor
                 self.bodyLabel.font = notificationManager.notificationsBodyFont
@@ -134,7 +134,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
         self.titleLabel.frame = CGRect(x: textLabelsXPosition, y: topPadding, width: notificationWidth - textLabelsXPosition - padding, height: CGFloat(0.0))
         self.titleLabel.sizeToFit()
         
-        if self.notification.body != nil && (self.notification.body!).characters.count > 0 {
+        if self.notification.body != nil && (self.notification.body!).count > 0 {
             self.bodyLabel.frame = CGRect(x: textLabelsXPosition, y: self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + kBodyLabelTopPadding, width: notificationWidth - padding - textLabelsXPosition, height: 0.0)
             self.bodyLabel.sizeToFit()
             height = self.bodyLabel.frame.origin.y + self.bodyLabel.frame.size.height

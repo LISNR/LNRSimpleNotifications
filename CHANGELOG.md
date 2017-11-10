@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.7.1
+- Solved warnings related to deprecated String properties
+
 ## 0.7.0
 ### Changed
 - Updated for Swift 4.
