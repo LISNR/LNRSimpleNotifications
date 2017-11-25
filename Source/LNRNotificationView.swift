@@ -18,19 +18,19 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     /**
      *  Set to YES by the Notification manager while the notification view is onscreen
      */
-    public var isDisplayed: Bool = false
+    @objc public var isDisplayed: Bool = false
     
     /**
      *  The LNRNotification this LNRNotificationView represents
      */
-    public var notification: LNRNotification
+    @objc public var notification: LNRNotification
     
     /** Inits the notification view. Do not call this from outside this library.
      *  
      *  @param notification The LNRNotification object this LRNNotificationView represents
      *  @param dismissingEnabled Should this notification be dismissed when the user taps/swipes it?
      */
-    init(notification: LNRNotification, icon: UIImage?, notificationManager: LNRNotificationManager) {
+    @objc init(notification: LNRNotification, icon: UIImage?, notificationManager: LNRNotificationManager) {
         
         self.notification = notification
         self.notificationManager = notificationManager
@@ -97,7 +97,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     /**
      * Required initializer 'init(coder:)' must be implemented by subclasses of UIView
      */
-    required public init?(coder decoder: NSCoder) {
+    @objc required public init?(coder decoder: NSCoder) {
         assertionFailure("Cannot initialize LNRNotificationView with init:decoder")
         self.notification = LNRNotification(title: "", body: nil, onTap: nil, onTimeout: nil)
         super.init(coder: decoder)
@@ -108,7 +108,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
      *  @param completion A block called after the completion of the dismiss animation. This block is only called if the notification was displayed on screen at the time dismissWithCompletion: was called.
      *  @return true if notification was displayed at the time dismissWithCompletion: was called, false if notification was not displayed.
      */
-    public func dismissWithCompletion(_ completion: LNRNotificationOperationCompletionBlock?) -> Bool {
+    @objc public func dismissWithCompletion(_ completion: LNRNotificationOperationCompletionBlock?) -> Bool {
         return notificationManager.dismissNotificationView(notificationView: self, dismissAnimationCompletion: completion)
     }
     

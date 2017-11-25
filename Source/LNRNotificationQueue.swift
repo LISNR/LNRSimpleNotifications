@@ -16,14 +16,14 @@ public class LNRNotificationQueue: NSObject {
      * 
      *  @param notificationManager The LNRNotificationManager that will be used to display queued messages. You should not trigger notifications from this Notification Manager anywhere else in your app.
      */
-    public init(notificationManager: LNRNotificationManager) {
+    @objc public init(notificationManager: LNRNotificationManager) {
         self.notificationManager = notificationManager
     }
     
     /**
      *  Queues a notification to be displayed.
      */
-    public func queueNotification(notification: LNRNotification) {
+    @objc public func queueNotification(notification: LNRNotification) {
         if notificationManager.isNotificationActive {
             notificationQueue.append(notification)
         } else {
