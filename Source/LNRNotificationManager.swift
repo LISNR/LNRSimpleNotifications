@@ -57,9 +57,7 @@ public class LNRNotificationManager: NSObject {
         if isNotificationActive {
             return self.dismissNotificationView(notificationView: self.activeNotification!, dismissAnimationCompletion: { () -> Void in
                 self.activeNotification = nil
-                if completion != nil {
-                    completion!()
-                }
+                completion?()
             })
         }
         
@@ -96,9 +94,7 @@ public class LNRNotificationManager: NSObject {
                     self.activeNotification = nil
                 }
                 
-                if dismissAnimationCompletion != nil {
-                    dismissAnimationCompletion!()
-                }
+                dismissAnimationCompletion?()
             })
             
             return true
@@ -193,17 +189,14 @@ public class LNRNotificationManager: NSObject {
         
         UIView.animate(withDuration: kLNRNotificationAnimationDuration + 0.1, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [UIViewAnimationOptions.beginFromCurrentState, UIViewAnimationOptions.allowUserInteraction], animations: { () -> Void in
             notificationView.center = toPoint
-            }, completion: nil)
+        }, completion: nil)
         
         if notificationView.notification.duration != LNRNotificationDuration.endless.rawValue {
             let notificationDisplayTime = notificationView.notification.duration > 0 ? notificationView.notification.duration : LNRNotificationDuration.default.rawValue
             let delayTime = DispatchTime.now() + Double(Int64(notificationDisplayTime * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime, execute: { [unowned self] () -> Void in
-                let dismissed = self.dismissNotificationView(notificationView: notificationView, dismissAnimationCompletion: nil)
-                if dismissed {
-                    if let onTimeout = notificationView.notification.onTimeout {
-                        onTimeout()
-                    }
+                if self.dismissNotificationView(notificationView: notificationView, dismissAnimationCompletion: nil) {
+                    notificationView.notification.onTimeout?()
                 }
             })
         }
