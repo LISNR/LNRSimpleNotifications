@@ -5,18 +5,6 @@ __TSMessages__ is an amazingly powerful in-app notifications library but require
 ![LNRSimpleNotifications Demo Screenshot](https://s3.amazonaws.com/lnr-simple-notifications/demo-app-scale.png)
 ![Wakarusa Screenshot](https://s3.amazonaws.com/lnr-simple-notifications/waka-scale.png)
 
-## Swift 2.3
-
-Use the __swift2.3__ branch. This branch exists to extend Swift 2.3 support. However, features are frozen and it will not be maintained.
-
-#### Podfile
-
-To use the __swift2.3__ branch update your podfile entry as follows:
-
-```swift
-pod 'LNRSimpleNotifications', :git => 'https://github.com/LISNR/LNRSimpleNotifications.git', :branch => 'swift2.3'
-```
-
 ## How do I set it up?
 
 We're glad you asked.
