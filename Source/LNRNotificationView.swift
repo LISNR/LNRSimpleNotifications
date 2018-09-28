@@ -72,7 +72,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
         
         self.seperator.frame = CGRect(x: CGFloat(0.0), y: CGFloat(0.0), width: notificationWidth, height: (1.0)) //Set seperator position at the top of the notification view. If notification position is Top we'll update it when we layout subviews.
         self.seperator.backgroundColor = notificationManager.notificationsSeperatorColor
-        self.seperator.autoresizingMask = UIViewAutoresizing.flexibleWidth
+        self.seperator.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         self.addSubview(self.seperator)
         
         let notificationHeight:CGFloat = self.notificationViewHeightAfterLayoutOutSubviews(padding, notificationWidth: notificationWidth)
@@ -85,9 +85,9 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
         self.frame = CGRect(x: CGFloat(0.0), y: topPosition, width: notificationWidth, height: notificationHeight)
         
         if notificationManager.notificationsPosition == LNRNotificationPosition.top {
-            self.autoresizingMask = UIViewAutoresizing.flexibleWidth
+            self.autoresizingMask = UIView.AutoresizingMask.flexibleWidth
         } else {
-            self.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+            self.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleTopMargin, UIView.AutoresizingMask.flexibleBottomMargin]
         }
         
         let tapGestureRecognizer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LNRNotificationView.handleTap(tapGestureRecognizer:)))
@@ -173,7 +173,7 @@ public class LNRNotificationView: UIView, UIGestureRecognizerDelegate {
     //MARK: Tap Recognition
     
     @objc func handleTap(tapGestureRecognizer: UITapGestureRecognizer) {
-        if tapGestureRecognizer.state == UIGestureRecognizerState.ended {
+        if tapGestureRecognizer.state == UIGestureRecognizer.State.ended {
             let _ = dismissWithCompletion(nil)
             if self.notification.onTap != nil {
                 self.notification.onTap!()
