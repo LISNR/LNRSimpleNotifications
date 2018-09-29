@@ -1,5 +1,8 @@
 # Change Log
 
+## 0.9.0
+- Updated to Swift 4.2 __[Contributed by JoshuaKaiser]__
+
 ## 0.8.0
 - Add @objc annotation to public methods __[Contributed by iv-mexx]__
 
